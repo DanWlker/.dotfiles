@@ -1,6 +1,7 @@
 # fzf
 # ripgrep
 # stow
+# tldr
 
 # dust
 alias du="dust"
