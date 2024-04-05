@@ -4,7 +4,7 @@
 
 If you already have the repo cloned:
 
-    git submodule update --init --recursive
+    git submodule update --init --remote --recursive
 
 Clone this repo to your home directory ~/ then run
     
