@@ -12,7 +12,7 @@ alias ll="eza -alh"
 alias tree="eza --tree"
 
 # bat
-alias cat="bat"
+alias cat="bat -p"
 
 # zoxide
 eval "$(zoxide init zsh)"
