@@ -1,7 +1,8 @@
 # fzf
-# ripgrep
+# ripgrep (replaces grep)
 # stow
 # tldr
+# fd (replaces find)
 
 # dust
 alias du="dust"
@@ -11,10 +12,10 @@ alias ls="eza"
 alias ll="eza -alh"
 alias tree="eza --tree"
 
-# bat
+# bat (replaces cat)
 alias cat="bat -p"
 
-# zoxide
+# zoxide (replaces cd)
 eval "$(zoxide init zsh --cmd cd)"
 
 # atuin
