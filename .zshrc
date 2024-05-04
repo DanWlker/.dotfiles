@@ -22,10 +22,6 @@ alias cc="z -"
 # atuin
 eval "$(atuin init zsh)"
 
-# zsh-vi-mode
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-ZVM_VI_EDITOR=nvim
-
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
