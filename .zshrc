@@ -15,9 +15,7 @@ alias tree="eza --tree"
 alias cat="bat -p"
 
 # zoxide
-eval "$(zoxide init zsh)"
-alias cd="z"
-alias cc="z -"
+eval "$(zoxide init zsh --cmd cd)"
 
 # atuin
 eval "$(atuin init zsh)"
