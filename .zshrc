@@ -26,7 +26,8 @@ alias cat="bat -p"
 eval "$(zoxide init zsh --cmd cd)"
 
 # atuin
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
+bindkey '^r' atuin-search
 
 # zsh-vi-mode
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
@@ -39,6 +40,9 @@ export NVM_DIR="$HOME/.nvm"
 # powerlevel10k
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+
+# zsh-auto-suggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting (Note this must be the last command in .zshrc)
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
