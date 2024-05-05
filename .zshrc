@@ -29,7 +29,7 @@ alias cat="bat -p"
 # zoxide (replaces cd)
 eval "$(zoxide init zsh --cmd cd)"
 
-# atuin
+# atuin (replaces ctrl-r search)
 eval "$(atuin init zsh --disable-up-arrow)"
 bindkey '^r' atuin-search
 
