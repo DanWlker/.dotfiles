@@ -3,5 +3,5 @@ local config = wezterm.config_builder()
 config.color_scheme = "Catppuccin Macchiato"
 --config.color_scheme = "Catppuccin Frappe"
 --config.color_scheme = "Tokyo Night"
-config.font = wezterm.font("Fira Code")
+config.font = wezterm.font("MesloLGS NF")
 return config
