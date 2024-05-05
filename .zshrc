@@ -6,10 +6,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # fzf
-# ripgrep (replaces grep)
 # stow
 # tldr
+
+# ripgrep (replaces grep)
+alias grep="rg"
+
 # fd (replaces find)
+alias find="fd"
 
 # dust
 alias du="dust"
