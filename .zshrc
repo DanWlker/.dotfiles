@@ -1,3 +1,7 @@
+# Other no configuration plugins as a record of what to install when moving to new laptop:
+# stow
+# tldr
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -8,19 +12,16 @@ fi
 # fzf
 eval "$(fzf --zsh)"
 
-# stow
-# tldr
-
 # ripgrep (replaces grep)
 alias grep="rg"
 
 # fd (replaces find)
 alias find="fd"
 
-# dust
+# dust (replaces du)
 alias du="dust"
 
-# eza
+# eza (replaces ls)
 alias ls="eza"
 alias ll="eza -alh"
 alias tree="eza --tree"
