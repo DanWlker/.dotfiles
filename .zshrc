@@ -33,6 +33,12 @@ eval "$(zoxide init zsh --cmd cd)"
 eval "$(atuin init zsh --disable-up-arrow)"
 bindkey '^r' atuin-search
 
+# Basic tab autocomplete
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
 
 # powerlevel10k
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
@@ -44,5 +50,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh-syntax-highlighting (Note this must be the near? last command in .zshrc)
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# vi mode
 bindkey -v
+export KEYTIMEOUT=1
 
