@@ -6,6 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # fzf
+eval "$(fzf --zsh)"
+
 # stow
 # tldr
 
@@ -28,10 +30,6 @@ alias cat="bat -p"
 
 # zoxide (replaces cd)
 eval "$(zoxide init zsh --cmd cd)"
-
-# atuin (replaces ctrl-r search)
-eval "$(atuin init zsh --disable-up-arrow)"
-bindkey '^r' atuin-search
 
 # Basic tab autocomplete
 autoload -U compinit
