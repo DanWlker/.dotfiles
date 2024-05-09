@@ -7,5 +7,7 @@ config.color_scheme = "Catppuccin Macchiato"
 -- config.color_scheme = "Catppuccin Frappe"
 -- config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "rose-pine"
-config.font = wezterm.font("MesloLGS NF")
+config.font = wezterm.font("Fira Code")
+config.font_size = 14
+config.window_decorations = "RESIZE"
 return config
