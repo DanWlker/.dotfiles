@@ -14,3 +14,5 @@ normal = { family = "Fira Code", style = "Regular" }
 size = 16
 offset = { y = 5 }
 
+[cursor]
+style = { blinking = "On" }
