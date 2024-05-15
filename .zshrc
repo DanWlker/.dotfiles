@@ -34,6 +34,9 @@ alias cat="bat -p"
 # zoxide (replaces cd)
 eval "$(zoxide init zsh --cmd cd)"
 
+# gnu sed (replaces sed)
+alias sed="gsed"
+
 # Basic tab autocomplete
 autoload -U compinit
 zstyle ':completion:*' menu select
