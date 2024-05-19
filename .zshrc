@@ -45,13 +45,12 @@ eval "$(zoxide init zsh --cmd cd)"
 # gnu sed (replaces sed)
 alias sed="gsed"
 
-# Basic tab autocomplete
-autoload -U compinit
-zstyle ':completion:*' menu select
+# fzf-tab
+zstyle ':completion:*' menu no
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
+autoload -U compinit; compinit
+source ~/somewhere/fzf-tab.plugin.zsh
 
 # powerlevel10k
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
