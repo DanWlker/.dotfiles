@@ -23,3 +23,5 @@ _darcs
 
 # Non default stuff
 \.gitmodules
+ignored
+\.DS_Store
