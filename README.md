@@ -22,3 +22,7 @@ After you made changes to the submodule .config/nvim:
     git commit -m <message>
     git push
 
+If submodule changes don't appear when you run `git status`:
+
+    git submodule update --remote --merge
+
