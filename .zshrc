@@ -4,6 +4,8 @@
 # tmux
 # tmp
 
+echo -ne '\e[6 q' # Use beam shape cursor on startup.
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -89,7 +91,6 @@ zle-line-init() {
     echo -ne "\e[6 q"
 }
 zle -N zle-line-init
-echo -ne '\e[6 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 # Set cursor style (DECSCUSR), VT520.
 # 0  ⇒  blinking block.
