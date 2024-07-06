@@ -50,6 +50,10 @@ eval "$(zoxide init zsh --cmd cd)"
 # gnu sed (replaces sed)
 alias sed="gsed"
 
+# rsync (aliased for mv and cp to allow show progress, also rmb to install latest version using brew)
+alias cp="rsync --info=progress2 --info=name0"
+alias mv="rsync --info=progress2 --info=name0 --remove-source-files"
+
 # fzf-tab
 zstyle ':completion:*' menu no
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
