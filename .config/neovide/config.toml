@@ -1,0 +1,5 @@
+fork = true
+
+[font]
+normal = ["Cousine Nerd Font Mono"]
+size = 16.0

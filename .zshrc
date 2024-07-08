@@ -5,9 +5,9 @@
 # tmp
 
 ## Start tmux
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux new -As0
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   exec tmux new -As0
+# fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -80,4 +80,5 @@ export KEYTIMEOUT=1
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
-export EDITOR=nvim
+export EDITOR=neovide
+alias vim="neovide"
