@@ -61,8 +61,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
 autoload -U compinit; compinit
 source ~/somewhere/fzf-tab.plugin.zsh
 
-# man
-export MANPAGER="nvim +Man!"
 
 # powerlevel10k
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
