@@ -38,7 +38,6 @@ alias du="dust"
 
 # eza (replaces ls)
 alias ls="eza"
-alias ll="eza -alh"
 alias tree="eza --tree"
 
 # bat (replaces cat)
@@ -52,7 +51,7 @@ alias sed="gsed"
 
 # rsync (aliased for mv and cp to allow show progress, also rmb to install latest version using brew)
 alias cp="rsync --info=progress2 --info=name0"
-alias mv="rsync --info=progress2 --info=name0 --remove-source-files"
+alias mv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
 
 # fzf-tab
 zstyle ':completion:*' menu no
