@@ -25,7 +25,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # fzf
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 
 # ripgrep (replaces grep)
 alias grep="rg"
