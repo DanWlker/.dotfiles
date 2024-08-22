@@ -26,3 +26,6 @@ If submodule changes don't appear when you run `git status`:
 
     git submodule update --remote --merge
 
+To reinstall everything that is listed in my_brews, use the command below:
+
+    xargs brew install < my_brews
