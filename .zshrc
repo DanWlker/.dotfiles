@@ -17,7 +17,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 setopt inc_append_history
-setopt sharehistory
+setopt share_history
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
@@ -81,3 +81,4 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 export EDITOR=nvim
+export VISUAL=nvim
