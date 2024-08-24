@@ -19,7 +19,7 @@ TERM = "xterm-256color"
 # FiraCode 
 # RobotoMono Nerd Font Mono
 [font]
-normal = { family = "FiraCode Nerd Font", style = "Regular" }
+normal = { family = "JetbrainsMono Nerd Font", style = "Regular" }
 bold = { style = "Bold" }
 bold_italic = { style = "Bold Italic" }
 italic = { style = "Italic" }
