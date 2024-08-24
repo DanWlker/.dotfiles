@@ -23,7 +23,7 @@ normal = { family = "JetbrainsMono Nerd Font", style = "Regular" }
 bold = { style = "Bold" }
 bold_italic = { style = "Bold Italic" }
 italic = { style = "Italic" }
-size = 15
+size = 16
 
 [cursor]
 style = { blinking = "On" }
