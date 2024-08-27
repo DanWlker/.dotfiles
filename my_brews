@@ -1,13 +1,12 @@
-bash
 bat
 bc
-bloznelis/tap/typioca
 buf
 clamav
 cocoapods
 coreutils
 danwlker/remind/remind@0.0.4-alpha
 dart-lang/dart/dart
+direnv
 dust
 eza
 fd
@@ -17,12 +16,9 @@ gh
 git
 glab
 gnu-sed
-golangci-lint
 grpcui
-helix
 jq
 leoafarias/fvm/fvm
-nowplaying-cli
 powerlevel10k
 redis
 ripgrep
