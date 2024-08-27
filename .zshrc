@@ -46,6 +46,9 @@ alias cat="bat -p"
 # zoxide (replaces cd)
 eval "$(zoxide init zsh --cmd cd)"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # gnu sed (replaces sed)
 alias sed="gsed"
 
