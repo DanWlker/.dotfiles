@@ -1,7 +1,6 @@
 bat
 bc
 buf
-clamav
 cocoapods
 coreutils
 danwlker/remind/remind@0.0.4-alpha
@@ -19,7 +18,9 @@ gnu-sed
 grpcui
 jq
 leoafarias/fvm/fvm
+llvm
 powerlevel10k
+protobuf
 redis
 ripgrep
 rsync
