@@ -56,6 +56,9 @@ alias sed="gsed"
 alias cp="rsync --info=progress2 --info=name0"
 alias mv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
 
+# nvim
+alias vim="nvim"
+
 # fzf-tab
 zstyle ':completion:*' menu no
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
