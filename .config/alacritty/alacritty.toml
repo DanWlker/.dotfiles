@@ -13,13 +13,15 @@ import = [
 [env]
 TERM = "xterm-256color"
 
-# Cousine Nerd Font Mono
-# LiterationMono Nerd Font
-# JetbrainsMono
-# FiraCode 
-# RobotoMono Nerd Font Mono
+# [[ Font ]]
+# JetbrainsMono Nerd Font
+# Monaspace Neon
+# MonoLisa Nerd Font
+# CommitMono Nerd Font
+# FiraCode Nerd Font
+# Maple Mono NF
 [font]
-normal = { family = "JetbrainsMono Nerd Font", style = "Regular" }
+normal = { family = "MonoLisa Nerd Font", style = "Regular" }
 bold = { style = "Bold" }
 bold_italic = { style = "Bold Italic" }
 italic = { style = "Italic" }

@@ -6,17 +6,26 @@ config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "kanagawabones"
 -- config.color_scheme = "Catppuccin Frappe"
 -- config.color_scheme = "rose-pine"
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+
+-- [[ Font ]]
+-- JetbrainsMono Nerd Font
+-- Monaspace Neon
+-- MonoLisa Nerd Font
+-- CommitMono Nerd Font
+-- FiraCode Nerd Font
+-- Maple Mono NF
+local fontName = "MonoLisa Nerd Font"
+config.font = wezterm.font(fontName)
 config.font_rules = {
 	{
 		intensity = "Bold",
 		italic = false,
-		font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", stretch = "Normal", style = "Normal" }),
+		font = wezterm.font(fontName, { weight = "Bold", stretch = "Normal", style = "Normal" }),
 	},
 	{
 		intensity = "Bold",
 		italic = true,
-		font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", stretch = "Normal", style = "Italic" }),
+		font = wezterm.font(fontName, { weight = "Bold", stretch = "Normal", style = "Italic" }),
 	},
 }
 config.font_size = 16
