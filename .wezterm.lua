@@ -14,7 +14,7 @@ config.color_scheme = "Tokyo Night"
 -- CommitMono Nerd Font
 -- FiraCode Nerd Font
 -- Maple Mono NF
-local fontName = "MonoLisa Nerd Font"
+local fontName = "JetbrainsMono Nerd Font"
 config.font = wezterm.font(fontName)
 config.font_rules = {
 	{
