@@ -1,10 +1,10 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-config.color_scheme = "Tokyo Night"
+-- config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "Edge Dark (base16)"
 -- config.color_scheme = "Kasugano (terminal.sexy)"
 -- config.color_scheme = "kanagawabones"
--- config.color_scheme = "Catppuccin Frappe"
+config.color_scheme = "Catppuccin Mocha"
 -- config.color_scheme = "rose-pine"
 
 -- [[ Font ]]
