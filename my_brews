@@ -16,6 +16,7 @@ node
 powerlevel10k
 ripgrep
 rsync
+sshs
 stow
 telnet
 tlrc
