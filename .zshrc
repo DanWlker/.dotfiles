@@ -1,8 +1,7 @@
 # Other no configuration plugins as a record of what to install when moving to new laptop:
 # stow
-# tldr
-# tmux
-# tmp
+# tldr (tealdeer)
+# tmux (zellij)
 
 ## Start tmux
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
