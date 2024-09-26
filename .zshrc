@@ -5,8 +5,15 @@
 # tmp
 
 ## Start tmux
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux new -As tmux
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   exec tmux new -As tmux
+# fi
+
+## Start zellij
+# modified from this command: zellij setup --generate-auto-start zsh
+if [[ -z "$ZELLIJ" ]]; then
+    zellij attach -c
+    exit
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -58,6 +65,10 @@ alias mv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
 
 # nvim
 alias vim="nvim"
+
+mkcd() {
+    mkdir $1 ; cd $1
+}
 
 # fzf-tab
 zstyle ':completion:*' menu no
