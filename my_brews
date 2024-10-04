@@ -10,6 +10,8 @@ gawk
 git
 gnu-sed
 jq
+just
+nvim
 powerlevel10k
 ripgrep
 rsync
