@@ -11,7 +11,7 @@
 ## Start zellij
 # modified from this command: zellij setup --generate-auto-start zsh
 if [[ -z "$ZELLIJ" ]]; then
-    zellij attach -c
+    zellij a main || zellij -s main || zellij
     exit
 fi
 
