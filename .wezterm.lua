@@ -29,7 +29,7 @@ config.font_rules = {
 		font = wezterm.font(fontName, { weight = "Bold", stretch = "Normal", style = "Italic" }),
 	},
 }
-config.font_size = 16
+config.font_size = 14
 config.window_padding = {
 	left = 0,
 	right = 0,
@@ -38,4 +38,5 @@ config.window_padding = {
 }
 config.hide_tab_bar_if_only_one_tab = true
 config.front_end = "WebGpu"
+config.line_height = 1.1
 return config
