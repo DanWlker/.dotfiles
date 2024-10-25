@@ -3,10 +3,10 @@ general.import = [
   # "~/.config/alacritty/catppuccin-latte.toml"
   # "~/.config/alacritty/catppuccin-frappe.toml"
   # "~/.config/alacritty/catppuccin-macchiato.toml"
-  # "~/.config/alacritty/catppuccin-mocha.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
   # "~/.config/alacritty/rose-pine.toml"
   # "~/.config/alacritty/rose-pine-moon.toml"
-  "~/.config/alacritty/tokyo-night.toml"
+  # "~/.config/alacritty/tokyo-night.toml"
   # "~/.config/alacritty/tokyo-night-storm.toml"
 ]
 

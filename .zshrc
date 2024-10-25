@@ -4,16 +4,16 @@
 # tmux (zellij)
 
 ## Start tmux
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   exec tmux new -As tmux
-# fi
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux new -As tmux
+fi
 
 ## Start zellij
 # modified from this command: zellij setup --generate-auto-start zsh
-if [[ -z "$ZELLIJ" ]]; then
-    zellij a main || zellij -s main || zellij
-    exit
-fi
+# if [[ -z "$ZELLIJ" ]]; then
+#     zellij a main || zellij -s main || zellij
+#     exit
+# fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
