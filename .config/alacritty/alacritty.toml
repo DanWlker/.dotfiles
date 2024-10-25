@@ -1,4 +1,4 @@
-import = [
+general.import = [
   # uncomment the flavour you want below:
   # "~/.config/alacritty/catppuccin-latte.toml"
   # "~/.config/alacritty/catppuccin-frappe.toml"
@@ -25,7 +25,8 @@ normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 bold = { style = "Bold" }
 bold_italic = { style = "Bold Italic" }
 italic = { style = "Italic" }
-size = 16
+size = 14
+offset.y = 1
 
 [cursor]
 style = { blinking = "On" }
