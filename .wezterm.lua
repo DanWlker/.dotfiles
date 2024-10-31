@@ -15,6 +15,7 @@ config.color_scheme = "Catppuccin Mocha"
 -- FiraCode Nerd Font
 -- Maple Mono NF
 -- Fragment Mono
+-- Rec Mono Duotone
 local fontName = "JetbrainsMono Nerd Font"
 config.font = wezterm.font(fontName)
 config.font_rules = {
