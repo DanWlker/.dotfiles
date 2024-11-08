@@ -91,6 +91,8 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+# https://github.com/kutsan/zsh-system-clipboard
+source "${ZSH_CUSTOM:-$HOME/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
 
 # others
 autoload -z edit-command-line
