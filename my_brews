@@ -21,6 +21,7 @@ tealdeer
 telnet
 tmux
 vim
+wget
 yq
 zellij
 zoxide
