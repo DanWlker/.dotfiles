@@ -9,9 +9,11 @@ fzf
 gawk
 git
 gnu-sed
+htop
 jq
 just
 nvim
+k6
 powerlevel10k
 ripgrep
 rsync
