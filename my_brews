@@ -10,11 +10,13 @@ gawk
 git
 gnu-sed
 htop
+jesseduffield/lazygit/lazygit
 jq
 just
-nvim
 k6
+neovim
 powerlevel10k
+pstree
 ripgrep
 rsync
 sshs
