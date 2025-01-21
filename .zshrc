@@ -100,3 +100,4 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 export EDITOR=nvim
 export VISUAL=nvim
+export XDG_CONFIG_HOME="$HOME/.config"
