@@ -5,6 +5,7 @@ direnv
 dust
 eza
 fd
+ffsend
 fzf
 gawk
 git
@@ -15,8 +16,10 @@ jq
 just
 k6
 neovim
+ocrmypdf
 posting
 powerlevel10k
+presenterm
 pstree
 ripgrep
 rsync
