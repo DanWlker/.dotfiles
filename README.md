@@ -29,3 +29,14 @@ If submodule changes don't appear when you run `git status`:
 To reinstall everything that is listed in my_brews, use the command below:
 
     brew install $(cat my_brews)
+
+Install [rust](https://www.rust-lang.org/tools/install) (for blink cmp neovim)
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Install [zsh-system-clipboard](https://github.com/kutsan/zsh-system-clipboard)
+```
+git clone https://github.com/kutsan/zsh-system-clipboard ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-system-clipboard
+```
