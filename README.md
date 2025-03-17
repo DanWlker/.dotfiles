@@ -40,3 +40,5 @@ Install [zsh-system-clipboard](https://github.com/kutsan/zsh-system-clipboard)
 ```
 git clone https://github.com/kutsan/zsh-system-clipboard ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-system-clipboard
 ```
+
+After tmux launches, press `prefix + I`, to install plugins (that is capital I)
