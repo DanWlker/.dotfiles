@@ -31,7 +31,6 @@ tmux
 vim
 wget
 yq
-zellij
 zoxide
 zsh-autosuggestions
 zsh-syntax-highlighting
