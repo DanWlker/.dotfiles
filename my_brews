@@ -1,5 +1,6 @@
 bat
 bc
+btop
 coreutils
 direnv
 dust
@@ -10,7 +11,6 @@ fzf
 gawk
 git
 gnu-sed
-btop
 jesseduffield/lazygit/lazygit
 jq
 just
