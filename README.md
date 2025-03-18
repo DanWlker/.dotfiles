@@ -36,13 +36,6 @@ Edit: try to use this
 xargs brew install < my_brews
 ```
 
-To export
-
-```
-brew leaves > my_brews
-```
-    
-
 Install [rust](https://www.rust-lang.org/tools/install) (for blink cmp neovim)
 
 ```
@@ -55,3 +48,11 @@ git clone https://github.com/kutsan/zsh-system-clipboard ${ZSH_CUSTOM:-~/.zsh}/p
 ```
 
 After tmux launches, press `prefix + I`, to install plugins (that is capital I)
+
+## Maintenance
+
+To export
+
+```
+brew leaves > my_brews
+```
