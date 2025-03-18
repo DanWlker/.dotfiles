@@ -28,7 +28,20 @@ If submodule changes don't appear when you run `git status`:
 
 To reinstall everything that is listed in my_brews, use the command below:
 
-    brew install $(cat my_brews)
+~brew install $(cat my_brews)~
+
+Edit: try to use this
+
+```
+xargs brew install < my_brews
+```
+
+To export
+
+```
+brew leaves > my_brews
+```
+    
 
 Install [rust](https://www.rust-lang.org/tools/install) (for blink cmp neovim)
 
