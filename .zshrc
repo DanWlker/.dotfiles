@@ -71,6 +71,11 @@ alias mv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
 # nvim
 alias vim="nvim"
 
+# xclip
+if command -v xclip 2>&1 >/dev/null
+then
+  alias xclip="xclip -se c"
+fi
 mkcd() {
     mkdir $1 ; cd $1
 }
