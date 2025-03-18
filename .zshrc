@@ -93,6 +93,3 @@ source "${ZSH_CUSTOM:-$HOME/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipbo
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
-export EDITOR=nvim
-export VISUAL=nvim
-export XDG_CONFIG_HOME="$HOME/.config"
