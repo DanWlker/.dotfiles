@@ -80,11 +80,19 @@ mkcd() {
     mkdir $1 ; cd $1
 }
 
+# asdf
+if [ ! -d "${ASDF_DATA_DIR:-$HOME/.asdf}/completions" ]; then
+  echo "Creating completions for asdf"
+  mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+  asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
+fi
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # fzf-tab
 zstyle ':completion:*' menu no
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
-autoload -U compinit; compinit
+autoload -Uz compinit && compinit # asdf also relies on this
 source ~/somewhere/fzf-tab.plugin.zsh
 
 
