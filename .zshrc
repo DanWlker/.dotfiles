@@ -88,6 +88,8 @@ if [ ! -d "${ASDF_DATA_DIR:-$HOME/.asdf}/completions" ]; then
 fi
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+. ~/.asdf/plugins/golang/set-env.zsh
+
 # fzf-tab
 zstyle ':completion:*' menu no
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
