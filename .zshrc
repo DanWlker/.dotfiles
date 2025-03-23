@@ -89,6 +89,7 @@ fi
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 . ~/.asdf/plugins/golang/set-env.zsh
+export FLUTTER_ROOT="$(asdf where flutter)"
 
 # fzf-tab
 zstyle ':completion:*' menu no
