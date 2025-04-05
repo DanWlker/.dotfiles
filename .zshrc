@@ -80,6 +80,15 @@ mkcd() {
     mkdir $1 ; cd $1
 }
 
+y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # asdf
 if [ ! -d "${ASDF_DATA_DIR:-$HOME/.asdf}/completions" ]; then
   echo "Creating completions for asdf"
