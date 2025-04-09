@@ -40,7 +40,7 @@ setopt hist_find_no_dups
 source <(fzf --zsh)
 
 # ripgrep (replaces grep)
-alias grep="rg"
+alias grep="rg -i"
 
 # fd (replaces find)
 alias find="fd"
@@ -49,8 +49,8 @@ alias find="fd"
 alias du="dust"
 
 # eza (replaces ls)
-alias ls="eza"
-alias tree="eza --tree"
+alias ls="eza --icons=auto"
+alias tree="eza --icons=auto --tree"
 
 # bat (replaces cat)
 alias cat="bat -p"
@@ -76,10 +76,8 @@ if command -v xclip 2>&1 >/dev/null
 then
   alias xclip="xclip -se c"
 fi
-mkcd() {
-    mkdir $1 ; cd $1
-}
 
+# yazi
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -87,6 +85,10 @@ y() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+mkcd() {
+    mkdir $1 ; cd $1
 }
 
 # asdf
