@@ -38,6 +38,12 @@ setopt hist_find_no_dups
 
 # fzf
 source <(fzf --zsh)
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--color=border:#313244,label:#cdd6f4"
 
 # ripgrep (replaces grep)
 alias grep="rg -i"
@@ -65,8 +71,8 @@ eval "$(direnv hook zsh)"
 alias sed="gsed"
 
 # rsync (aliased for mv and cp to allow show progress, also rmb to install latest version using brew)
-alias cp="rsync --info=progress2 --info=name0"
-alias mv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
+# alias cp="rsync --info=progress2 --info=name0"
+# alias mv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
 
 # nvim
 alias vim="nvim"
@@ -109,6 +115,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
 autoload -Uz compinit && compinit # asdf also relies on this
 source ~/somewhere/fzf-tab.plugin.zsh
 
+# Local scripts
+export PATH="$HOME/.local/bin:$PATH"
 
 # powerlevel10k
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
