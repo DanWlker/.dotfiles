@@ -134,6 +134,7 @@ bindkey -v
 export KEYTIMEOUT=1
 # https://github.com/kutsan/zsh-system-clipboard
 source "${ZSH_CUSTOM:-$HOME/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
+bindkey -v '^?' backward-delete-char # fix backspace sometimes not working
 
 # others
 autoload -z edit-command-line
