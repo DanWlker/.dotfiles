@@ -70,9 +70,9 @@ eval "$(direnv hook zsh)"
 # gnu sed (replaces sed)
 alias sed="gsed"
 
-# rsync (aliased for mv and cp to allow show progress, also rmb to install latest version using brew)
-# alias cp="rsync --info=progress2 --info=name0"
-# alias mv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
+# rsync
+alias rcp="rsync --info=progress2 --info=name0"
+alias rmv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
 
 # nvim
 alias vim="nvim"
