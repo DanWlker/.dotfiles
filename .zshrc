@@ -71,8 +71,8 @@ eval "$(direnv hook zsh)"
 alias sed="gsed"
 
 # rsync
-alias rcp="rsync --info=progress2 --info=name0"
-alias rmv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
+alias cpr="rsync --info=progress2 --info=name0"
+alias mvr="rsync --info=progress2 --info=name0 --remove-source-files --archive"
 
 # nvim
 alias vim="nvim"
