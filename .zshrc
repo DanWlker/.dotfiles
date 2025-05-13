@@ -97,6 +97,9 @@ mkcd() {
     mkdir $1 ; cd $1
 }
 
+# kubectl
+alias kubectl="kubecolor"
+
 # asdf
 if [ ! -d "${ASDF_DATA_DIR:-$HOME/.asdf}/completions" ]; then
   echo "Creating completions for asdf"
