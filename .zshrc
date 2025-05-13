@@ -84,6 +84,11 @@ then
   alias xclip="xclip -se c"
 fi
 
+# tailscale needs special handling on mac
+if [ -f "/Applications/Tailscale.app/Contents/MacOS/Tailscale" ]; then
+	alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+fi
+
 # yazi
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
