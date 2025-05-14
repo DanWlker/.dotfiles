@@ -42,11 +42,6 @@ Install [rust](https://www.rust-lang.org/tools/install) (for blink cmp neovim)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Install [zsh-system-clipboard](https://github.com/kutsan/zsh-system-clipboard)
-```
-git clone https://github.com/kutsan/zsh-system-clipboard ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-system-clipboard
-```
-
 After tmux launches, press `prefix + I`, to install plugins (that is capital I)
 
 ## Maintenance
