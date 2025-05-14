@@ -5,3 +5,6 @@
 [submodule "somewhere"]
 	path = somewhere
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule ".zsh/plugins/zsh-system-clipboard"]
+	path = .zsh/plugins/zsh-system-clipboard
+	url = https://github.com/kutsan/zsh-system-clipboard
