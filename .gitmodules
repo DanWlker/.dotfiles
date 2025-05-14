@@ -2,3 +2,6 @@
 	path = .config/nvim
 	url = https://github.com/DanWlker/kickstart.nvim.git
 	branch = master
+[submodule "somewhere"]
+	path = somewhere
+	url = https://github.com/Aloxaf/fzf-tab
