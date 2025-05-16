@@ -18,7 +18,7 @@ After you made changes to the submodule .config/nvim:
     git commit -m <message>
     git push origin HEAD:master
     cd .dotfiles
-    git add .config/nvim 
+    git add .config/nvim
     git commit -m <message>
     git push
 
@@ -34,12 +34,6 @@ Edit: try to use this
 
 ```
 xargs brew install < my_brews
-```
-
-Install [rust](https://www.rust-lang.org/tools/install) (for blink cmp neovim)
-
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 After tmux launches, press `prefix + I`, to install plugins (that is capital I)

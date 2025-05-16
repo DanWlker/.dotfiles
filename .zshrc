@@ -25,6 +25,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [[ -f $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+	source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+	[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+fi
+
+# options
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=500000
 export SAVEHIST=500000
@@ -36,120 +42,27 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt globdots
-
-# fzf
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
---color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
---color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
---color=selected-bg:#45475A \
---color=border:#313244,label:#CDD6F4"
-source <(fzf --zsh)
-
-# ripgrep (replaces grep)
-alias grep="rg -i"
-
-# fd (replaces find)
-alias find="fd"
-
-# dust (replaces du)
-alias du="dust"
-
-# eza (replaces ls)
-alias ls="eza --icons=auto"
-alias tree="eza --icons=auto --tree"
-
-# bat (replaces cat)
-alias cat="bat -p"
-
-# zoxide (replaces cd)
-eval "$(zoxide init zsh --cmd cd)"
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# gnu sed (replaces sed)
-alias sed="gsed"
-
-# rsync
-alias cpr="rsync --info=progress2 --info=name0"
-alias mvr="rsync --info=progress2 --info=name0 --remove-source-files --archive"
-
-# nvim
-alias vim="nvim"
-
-# xclip
-if command -v xclip 2>&1 >/dev/null
-then
-  alias xclip="xclip -se c"
-fi
-
-# tailscale needs special handling on mac
-if [ -f "/Applications/Tailscale.app/Contents/MacOS/Tailscale" ]; then
-	alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-fi
-
-# yazi
-y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-
-mkcd() {
-    mkdir $1 ; cd $1
-}
-
-# kubectl
-alias kubectl="kubecolor"
-
-# asdf
-if [ ! -d "${ASDF_DATA_DIR:-$HOME/.asdf}/completions" ]; then
-  echo "Creating completions for asdf"
-  mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
-  asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
-fi
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-. ~/.asdf/plugins/golang/set-env.zsh
-export FLUTTER_ROOT="$(asdf where flutter)"
-
-# fzf-tab
-zstyle ':completion:*' menu no
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
-# NOTE: The use-fzf-default-opts may lead to unexpected behavior since some flags break this plugin. See https://github.com/Aloxaf/fzf-tab/issues/455
-zstyle ':fzf-tab:*' use-fzf-default-opts yes 
-autoload -Uz compinit && compinit # asdf also relies on this
-source ~/somewhere/fzf-tab.plugin.zsh
-
-# Local scripts
-export PATH="$HOME/.local/bin:$PATH"
-
-# powerlevel10k
-source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-
-# zsh-auto-suggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-unset ZSH_AUTOSUGGEST_USE_ASYNC # To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
-
-# zsh-syntax-highlighting (Note this must be the near? last command in .zshrc)
-source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+autoload -Uz compinit && compinit
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
 # https://github.com/kutsan/zsh-system-clipboard
-source "${ZSH_CUSTOM:-$HOME/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
 bindkey -v '^?' backward-delete-char # fix backspace sometimes not working
 
-# others
-autoload -z edit-command-line
-zle -N edit-command-line
-bindkey "^X^E" edit-command-line
+mkcd() {
+	mkdir $1 ; cd $1
+}
+
+# Local dependencies
+export PATH="$HOME/.local/bin:$PATH"
+
+# Setup commands
+source ~/.config/setup.sh
+if [ -f ~/.local/setup.sh ]; then
+	source ~/.local/setup.sh
+fi
+
 
