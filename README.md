@@ -1,44 +1,65 @@
 # Get Started
 
-    git clone https://github.com/DanWlker/.dotfiles.git --recurse-submodules
+## Installation
+
+```
+git clone https://github.com/DanWlker/.dotfiles.git --recurse-submodules
+```
 
 If you already have the repo cloned:
 
-    git submodule update --init --remote --recursive
+```
+git submodule update --init --remote --recursive
+```
 
-Clone this repo to your home directory ~/ then run
+To install everything that is listed in my_brews, use the command below:
+
+```
+brew install $(cat \~/.dotfiles/stow_ignored/my_brews)
+```
+
+OR
+
+```
+xargs brew install < ~/.dotfiles/stow_ignored/my_brews
+```
+
+To check whether everything is installed successfully, run
+
+```
+chmod +x ~/.dotfiles/stow_ignored/scripts/verify.sh
+~/.dotfiles/stow_ignored/scripts/verify.sh
+```
+
+Once everything is installed correctly run
 
     cd .dotfiles
     stow .
 
-After you made changes to the submodule .config/nvim:
-
-    cd .config/nvim
-    git add <stuff>
-    git commit -m <message>
-    git push origin HEAD:master
-    cd .dotfiles
-    git add .config/nvim
-    git commit -m <message>
-    git push
-
-If submodule changes don't appear when you run `git status`:
-
-    git submodule update --remote --merge
-
-To reinstall everything that is listed in my_brews, use the command below:
-
-~brew install $(cat my_brews)~
-
-Edit: try to use this
-
-```
-xargs brew install < my_brews
-```
+Restart your shell, tmux should launch
 
 After tmux launches, press `prefix + I`, to install plugins (that is capital I)
 
 ## Maintenance
+
+After you made changes to the submodule .config/nvim:
+
+```
+cd .config/nvim
+git add <stuff>
+git commit -m <message>
+git push origin HEAD:master
+cd .dotfiles
+git add .config/nvim
+git commit -m <message>
+git push
+```
+
+If submodule changes don't appear when you run `git status`:
+
+```
+git submodule update --remote --merge
+```
 
 To export
 
