@@ -23,6 +23,6 @@ _darcs
 
 # Non default stuff
 \.gitmodules
-ignored
+stow_ignored
 \.DS_Store
 my_brews
