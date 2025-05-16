@@ -5,10 +5,11 @@ sudo -v
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Download dependencies
-xargs brew install < ../my_brews
+xargs brew install < $HOME/.dotfiles/stow_ignored/my_brews
 
 # Verify everything is installed
-./verify.sh
+chmod +x $HOME/.dotfiles/stow_ignored/scripts/verify.sh
+$HOME/.dotfiles/stow_ignored/scripts/verify.sh
 
 # Install zsh if on linux
 if [ "$(uname)" != "Darwin" ]; then
