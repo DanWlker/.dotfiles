@@ -15,19 +15,16 @@ git submodule update --init --remote --recursive
 To install everything that is listed in my_brews, use the command below:
 
 ```
-brew install $(cat \~/.dotfiles/stow_ignored/my_brews)
+xargs brew install < ~/.dotfiles/stow_ignored/my_brews
 ```
 
 OR
 
-```
-xargs brew install < ~/.dotfiles/stow_ignored/my_brews
-```
+~brew install $(cat \~/.dotfiles/stow_ignored/my_brews)~
 
 To check whether everything is installed successfully, run
 
 ```
-chmod +x ~/.dotfiles/stow_ignored/scripts/verify.sh
 ~/.dotfiles/stow_ignored/scripts/verify.sh
 ```
 
