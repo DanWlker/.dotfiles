@@ -2,15 +2,7 @@
 
 ## Installation
 
-### Auto install
-
-Run the install.sh script
-
-```
-~/.dotfiles/stow_ignored/scripts/install.sh
-```
-
-### Manual Installation
+Clone the repo
 
 ```
 git clone https://github.com/DanWlker/.dotfiles.git --recurse-submodules
@@ -22,29 +14,45 @@ If you already have the repo cloned:
 git submodule update --init --remote --recursive
 ```
 
-Install dependencies
+### Auto install
 
-```
-xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/mac
-xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/common
-```
+1. Run the install.sh script, this will auto install brew as well
 
-To check whether everything is installed successfully, run
+    ```
+    ~/.dotfiles/stow_ignored/scripts/install.sh
+    ```
 
-```
-~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/mac
-~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/common
-```
+1. Restart your shell, tmux should launch
 
-Once everything is installed correctly run
+1. After tmux launches, press `prefix + I`, to install plugins (that is capital I)
 
-```
-cd .dotfiles && stow .
-```
+### Manual Installation
 
-Restart your shell, tmux should launch
+1. Install brew
 
-After tmux launches, press `prefix + I`, to install plugins (that is capital I)
+1. Install dependencies
+
+    ```
+    xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/mac
+    xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/common
+    ```
+
+1. To check whether everything is installed successfully, run
+
+    ```
+    ~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/mac
+    ~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/common
+    ```
+
+1. Once everything is installed correctly run
+
+    ```
+    cd .dotfiles && stow .
+    ```
+
+1. Restart your shell, tmux should launch
+
+1. After tmux launches, press `prefix + I`, to install plugins (that is capital I)
 
 ## Maintenance
 
