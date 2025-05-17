@@ -26,7 +26,3 @@ $HOME/.dotfiles/stow_ignored/scripts/verify.sh
 
 # Link stuff in the correct location
 cd ~/.dotfiles/ && stow .
-
-# Source tmux config
-tmux source ~/.config/tmux/tmux.conf
-
