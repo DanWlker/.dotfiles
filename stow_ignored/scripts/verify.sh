@@ -1,5 +1,6 @@
 #!/bin/bash
 PACKAGE_FILE="$HOME/.dotfiles/stow_ignored/my_brews"
+missing=()
 
 # Check if the file exists
 if [[ ! -f "$PACKAGE_FILE" ]]; then
@@ -15,5 +16,16 @@ while IFS= read -r pkg; do
     echo "✅ $pkg is installed"
   else
     echo "❌ $pkg is NOT installed"
+    missing+=("$pkg")
   fi
 done < "$PACKAGE_FILE"
+
+# Show missing packages
+if [[ ${#missing[@]} > 0 ]]; then
+  echo -e "\n📦 Missing packages:"
+  for pkg in "${missing[@]}"; do
+    echo "  - $pkg"
+  done
+else
+  echo -e "\n🎉 All packages are installed!"
+fi
