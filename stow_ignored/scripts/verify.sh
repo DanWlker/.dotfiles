@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check if a file path is provided
 if [[ $# -lt 1 ]]; then
