@@ -22,7 +22,7 @@ git submodule update --init --remote --recursive
     ~/.dotfiles/stow_ignored/scripts/install.sh
     ```
 
-1. Restart your shell, tmux should launch
+1. Start your shell as zsh, tmux should launch
 
 1. After tmux launches, press `prefix + I`, to install plugins (that is capital I)
 
@@ -50,7 +50,7 @@ git submodule update --init --remote --recursive
     cd .dotfiles && stow .
     ```
 
-1. Restart your shell, tmux should launch
+1. Start your shell as zsh, tmux should launch
 
 1. After tmux launches, press `prefix + I`, to install plugins (that is capital I)
 
