@@ -4,7 +4,7 @@ sudo -v
 # Install zsh if on linux
 if [ "$(uname)" != "Darwin" ]; then
 	sudo apt-get update
-	sudo apt install curl zsh gcc
+	sudo apt install curl zsh gcc git xclip
 fi
 
 # Download brew
