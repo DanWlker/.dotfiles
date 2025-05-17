@@ -2,6 +2,16 @@
 
 ## Installation
 
+### Auto install
+
+Run the install.sh script
+
+```
+~/.dotfiles/stow_ignored/scripts/install.sh
+```
+
+### Manual Installation
+
 ```
 git clone https://github.com/DanWlker/.dotfiles.git --recurse-submodules
 ```
@@ -12,26 +22,25 @@ If you already have the repo cloned:
 git submodule update --init --remote --recursive
 ```
 
-To install everything that is listed in my_brews, use the command below:
+Install dependencies
 
 ```
-xargs brew install < ~/.dotfiles/stow_ignored/my_brews
+xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/mac
+xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/common
 ```
-
-OR
-
-~brew install $(cat \~/.dotfiles/stow_ignored/my_brews)~
 
 To check whether everything is installed successfully, run
 
 ```
-~/.dotfiles/stow_ignored/scripts/verify.sh
+~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/mac
+~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/common
 ```
 
 Once everything is installed correctly run
 
-    cd .dotfiles
-    stow .
+```
+cd .dotfiles && stow .
+```
 
 Restart your shell, tmux should launch
 
