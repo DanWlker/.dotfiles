@@ -4,7 +4,7 @@ sudo -v
 # Install zsh if on linux
 if [ "$(uname)" != "Darwin" ]; then
 	sudo apt-get update
-	sudo apt install curl zsh
+	sudo apt install curl zsh gcc
 fi
 
 # Download brew
@@ -18,7 +18,7 @@ elif [ -d "/home/linuxbrew" ]; then
 fi
 
 # Download dependencies
-xargs brew install < $HOME/.dotfiles/stow_ignored/my_brews
+xargs -n 1 brew install < $HOME/.dotfiles/stow_ignored/my_brews
 
 # Verify everything is installed
 chmod +x $HOME/.dotfiles/stow_ignored/scripts/verify.sh

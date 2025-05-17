@@ -1,3 +1,4 @@
+#!/bin/bash
 PACKAGE_FILE="$HOME/.dotfiles/stow_ignored/my_brews"
 
 # Check if the file exists
