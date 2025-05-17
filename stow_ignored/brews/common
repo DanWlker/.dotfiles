@@ -2,7 +2,6 @@ asdf
 bat
 bc
 btop
-coreutils
 direnv
 dust
 eza
@@ -10,7 +9,6 @@ fd
 ffsend
 fzf
 gawk
-gnu-sed
 imagemagick
 jq
 just
@@ -31,7 +29,6 @@ sshs
 stow
 tealdeer
 tectonic
-telnet
 tmux
 vim
 wget

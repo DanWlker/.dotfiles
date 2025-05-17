@@ -1,5 +1,12 @@
 #!/bin/bash
-PACKAGE_FILE="$HOME/.dotfiles/stow_ignored/my_brews"
+
+# Check if a file path is provided
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 <package_file>"
+  exit 1
+fi
+
+PACKAGE_FILE="$1"
 missing=()
 
 # Check if the file exists
