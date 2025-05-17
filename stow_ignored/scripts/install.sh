@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Ask for admin priviledge upfront
 sudo -v
 
