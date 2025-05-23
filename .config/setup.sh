@@ -15,7 +15,7 @@ fi
 
 # ripgrep (replaces grep)
 if which rg &>/dev/null; then
-	alias grep="rg -i"
+	alias grep="rg --smart-case"
 fi
 
 # fd (replaces find)
