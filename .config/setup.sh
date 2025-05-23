@@ -9,6 +9,10 @@ if which fzf &>/dev/null; then
 	source <(fzf --zsh)
 fi
 
+if which delta &>/dev/null; then
+	alias diff="delta --side-by-side"
+fi
+
 # ripgrep (replaces grep)
 if which rg &>/dev/null; then
 	alias grep="rg -i"
@@ -32,7 +36,9 @@ fi
 
 # bat (replaces cat)
 if which bat &>/dev/null; then
-	alias cat="bat -p"
+	# bat will auto remove numbers if piped or subshell
+	alias cat="bat"
+	alias less='bat --paging=always'
 fi
 
 # zoxide (replaces cd)

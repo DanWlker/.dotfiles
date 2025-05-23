@@ -1,0 +1,19 @@
+[push]
+	autoSetupRemote = true
+
+[include]
+	path = ~/.config/delta/themes/catppuccin.gitconfig
+
+[core]
+    pager = delta --side-by-side # because lazygit looks cramped using side by side
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+    features = catppuccin-mocha
+
+[merge]
+    conflictstyle = zdiff3
