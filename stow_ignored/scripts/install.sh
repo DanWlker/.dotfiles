@@ -37,3 +37,6 @@ $VERIFY_PATH "$COMMON_BREW_PATH"
 
 # Link stuff in the correct location
 cd ~/.dotfiles/ && stow .
+
+# bat refresh theme cache
+bat cache --build
