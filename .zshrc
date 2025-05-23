@@ -54,13 +54,13 @@ bindkey -v '^?' backward-delete-char # fix backspace sometimes not working
 
 # aliases
 alias whoami="whoami && curl ident.me"
-alias cp="cp -i"
-alias mv="mv -i"
-alias ln='ln -i'
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias ln='ln -iv'
 alias wget='wget -c'
 alias mkdir="mkdir -pv"
 mkcd() {
-	mkdir $1 ; cd $1
+	mkdir "$1" && cd "$1"
 }
 
 # Local dependencies
