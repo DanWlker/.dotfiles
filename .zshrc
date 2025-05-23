@@ -52,6 +52,13 @@ export KEYTIMEOUT=1
 # https://github.com/kutsan/zsh-system-clipboard
 bindkey -v '^?' backward-delete-char # fix backspace sometimes not working
 
+# aliases
+alias whoami="whoami && curl ident.me"
+alias cp="cp -i"
+alias mv="mv -i"
+alias ln='ln -i'
+alias wget='wget -c'
+alias mkdir="mkdir -pv"
 mkcd() {
 	mkdir $1 ; cd $1
 }

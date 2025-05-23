@@ -9,6 +9,12 @@ if which fzf &>/dev/null; then
 	source <(fzf --zsh)
 fi
 
+# btop
+if which btop &>/dev/null; then
+	alias top="btop"
+fi
+
+# delta
 if which delta &>/dev/null; then
 	alias diff="delta --side-by-side"
 fi
@@ -65,6 +71,7 @@ fi
 # nvim
 if which nvim &>/dev/null; then
 	alias vim="nvim"
+	alias vi="nvim"
 fi
 
 # xclip
