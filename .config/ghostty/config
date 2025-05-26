@@ -4,3 +4,4 @@ font-family = "Maple Mono NF"
 macos-option-as-alt = left
 keybind = alt+left=unbind
 keybind = alt+right=unbind
+font-size = 14
