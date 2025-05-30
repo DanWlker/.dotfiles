@@ -96,9 +96,15 @@ if which yazi &>/dev/null; then
 	}
 fi
 
+# lazygit
+if which lazygit &>/dev/null; then
+	alias l="lazygit"
+fi
+
 # kubectl
 if which kubectl &>/dev/null && which kubecolor &>/dev/null; then
 	alias kubectl="kubecolor"
+	alias k="kubectl"
 fi
 
 # asdf
