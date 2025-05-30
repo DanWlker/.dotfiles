@@ -64,8 +64,8 @@ fi
 
 # rsync
 if which rsync &>/dev/null; then
-	alias cpr="rsync --info=progress2 --info=name0"
-	alias mvr="rsync --info=progress2 --info=name0 --remove-source-files --archive"
+	alias rcp="rsync --info=progress2 --info=name0"
+	alias rmv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
 fi
 
 # nvim
