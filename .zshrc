@@ -56,6 +56,7 @@ bindkey -v '^?' backward-delete-char # fix backspace sometimes not working
 alias whoami="whoami && curl ident.me"
 alias cp="cp -iv"
 alias mv="mv -iv"
+alias rm="rm -Iv"
 alias ln='ln -iv'
 alias wget='wget -c'
 alias mkdir="mkdir -pv"
