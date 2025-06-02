@@ -49,7 +49,6 @@ autoload -Uz compinit && compinit
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-# https://github.com/kutsan/zsh-system-clipboard
 bindkey -v '^?' backward-delete-char # fix backspace sometimes not working
 
 # aliases
