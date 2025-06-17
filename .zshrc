@@ -57,7 +57,6 @@ alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -Iv"
 alias ln='ln -iv'
-alias wget='wget -c'
 alias mkdir="mkdir -pv"
 mkcd() {
 	mkdir "$1" && cd "$1"

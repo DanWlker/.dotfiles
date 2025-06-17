@@ -24,6 +24,11 @@ if which rg &>/dev/null; then
 	alias grep="rg --smart-case"
 fi
 
+# wget
+if which wget &>/dev/null; then
+	alias wget='wget -c'
+fi
+
 # fd (replaces find)
 if which fd &>/dev/null; then
 	alias find="fd"
