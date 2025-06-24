@@ -61,6 +61,12 @@ alias mkdir="mkdir -pv"
 mkcd() {
 	mkdir "$1" && cd "$1"
 }
+cherrypickremote() {
+  git remote add cherrypickremote "$1"
+  git fetch cherrypickremote
+  git cherry-pick "$2"
+  git remote remove cherrypickremote
+}
 
 # Local dependencies
 export PATH="$HOME/.local/bin:$PATH"
