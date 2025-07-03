@@ -6,6 +6,7 @@
 
 [core]
     pager = delta --side-by-side # because lazygit looks cramped using side by side
+    editor = nvim
 
 [interactive]
     diffFilter = delta --color-only
