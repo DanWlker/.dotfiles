@@ -62,10 +62,8 @@ mkcd() {
 	mkdir "$1" && cd "$1"
 }
 cherrypickremote() {
-  git remote add cherrypickremote "$1"
-  git fetch cherrypickremote
-  git cherry-pick "$2"
-  git remote remove cherrypickremote
+	git fetch "$1" "$2"
+	git cherry-pick FETCH_HEAD
 }
 
 # Local dependencies
