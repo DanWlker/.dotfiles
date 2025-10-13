@@ -84,6 +84,16 @@ if which xclip &>/dev/null; then
 	alias xclip="xclip -se c"
 fi
 
+# bun
+if [[ -f "$HOME/.bun/bin/bun" ]]; then
+	# bun completions
+	[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+	# bun
+	export BUN_INSTALL="$HOME/.bun"
+	export PATH="$BUN_INSTALL/bin:$PATH"
+fi
+
 # tailscale needs special handling on mac
 if [[ -f /Applications/Tailscale.app/Contents/MacOS/Tailscale ]]; then
 	alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
@@ -131,7 +141,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
 # NOTE: The use-fzf-default-opts may lead to unexpected behavior since some flags break this plugin. See https://github.com/Aloxaf/fzf-tab/issues/455
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
-source $HOME/somewhere/fzf-tab.plugin.zsh
+source "$HOME/somewhere/fzf-tab.plugin.zsh"
 
 # zsh-system-clipboard
 if [[ -f ${ZSH_CUSTOM:-$HOME/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
@@ -146,6 +156,6 @@ fi
 
 # zsh-syntax-highlighting (Note this must be the near? last command in .zshrc)
 if [[ -f ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh ]]; then
-	source $HOME/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+	source "$HOME/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh"
 	source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
