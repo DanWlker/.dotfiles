@@ -67,6 +67,11 @@ if which gsed &>/dev/null; then
 	alias sed="gsed"
 fi
 
+# gawk (replaces awk)
+if which gawk &>/dev/null; then
+	alias awk="gawk"
+fi
+
 # rsync
 if which rsync &>/dev/null; then
 	alias rcp="rsync --info=progress2 --info=name0"

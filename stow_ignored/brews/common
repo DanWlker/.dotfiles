@@ -1,7 +1,6 @@
 aria2
 asdf
 bat
-bc
 btop
 difftastic
 direnv
@@ -14,11 +13,8 @@ git-delta
 imagemagick
 jq
 just
-k6
 lazygit
-mike-engel/jwt-cli/jwt-cli
 neovim
-noahgorstein/tap/jqp
 ocrmypdf
 ossp-uuid
 poppler
@@ -34,6 +30,7 @@ tealdeer
 tectonic
 tmux
 vim
+websocat
 yazi
 yq
 zoxide
