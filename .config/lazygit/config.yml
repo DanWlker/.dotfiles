@@ -4,32 +4,36 @@ gui:
   statusPanelView: "allBranchesLog"
   theme:
     activeBorderColor:
-      - '#a6e3a1'
+      - "#a6e3a1"
       - bold
     inactiveBorderColor:
-      - '#a6adc8'
+      - "#a6adc8"
     optionsTextColor:
-      - '#89b4fa'
+      - "#89b4fa"
     selectedLineBgColor:
-      - '#313244'
+      - "#313244"
     cherryPickedCommitBgColor:
-      - '#45475a'
+      - "#45475a"
     cherryPickedCommitFgColor:
-      - '#a6e3a1'
+      - "#a6e3a1"
     unstagedChangesColor:
-      - '#f38ba8'
+      - "#f38ba8"
     defaultFgColor:
-      - '#cdd6f4'
+      - "#cdd6f4"
     searchingActiveBorderColor:
-      - '#f9e2af'
+      - "#f9e2af"
   authorColors:
-    '*': '#b4befe'
+    "*": "#b4befe"
 git:
   log:
     showWholeGraph: true
+  pagers:
+    - pager: delta --dark --paging=never
+    - externalDiffCommand: difft --color=always
   paging:
+    # externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off
     colorArg: always
-    pager: delta --dark --paging=never
+    pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
 customCommands:
   - key: "C"
     command: 'git commit -m "{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}{{if eq .Form.Breaking `yes`}}!{{end}}: {{ .Form.Description }}"'
