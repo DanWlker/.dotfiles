@@ -74,5 +74,3 @@ source ~/.config/setup.sh
 if [ -f ~/.local/setup.sh ]; then
 	source ~/.local/setup.sh
 fi
-
-
