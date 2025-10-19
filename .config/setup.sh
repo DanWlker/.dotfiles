@@ -1,3 +1,7 @@
+if which vivid &>/dev/null; then
+	export LS_COLORS="$(vivid generate catppuccin-mocha)"
+fi
+
 # fzf
 if which fzf &>/dev/null; then
 	export FZF_DEFAULT_OPTS=" \
@@ -140,12 +144,29 @@ if which asdf &>/dev/null; then
 	export FLUTTER_ROOT="$(asdf where flutter)"
 fi
 
+# carapace
+if which carapace &>/dev/null; then
+	export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+	zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+	source <(carapace _carapace)
+fi
+
 # fzf-tab
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# preview directory's content with eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
-# NOTE: The use-fzf-default-opts may lead to unexpected behavior since some flags break this plugin. See https://github.com/Aloxaf/fzf-tab/issues/455
+# NOTE: This may lead to unexpected behavior since some flags break this plugin. See https://github.com/Aloxaf/fzf-tab/issues/455
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
 source "$HOME/somewhere/fzf-tab.plugin.zsh"
 
 # zsh-system-clipboard
