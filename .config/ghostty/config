@@ -6,4 +6,4 @@ keybind = alt+left=unbind
 keybind = alt+right=unbind
 font-size = 14
 custom-shader = shaders/cursor_smear.glsl
-adjust-cell-height = 15%
+adjust-cell-height = 10%
