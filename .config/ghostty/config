@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = "Catppuccin Mocha"
 font-thicken = true
 font-family = "Maple Mono NF"
 macos-option-as-alt = left
