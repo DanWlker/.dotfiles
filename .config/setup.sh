@@ -147,7 +147,7 @@ fi
 # carapace
 if which carapace &>/dev/null; then
 	export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-	zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+	# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 	zstyle ':fzf-tab:*' query-string ''
 	source <(carapace _carapace)
 fi
