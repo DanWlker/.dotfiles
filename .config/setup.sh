@@ -103,6 +103,11 @@ if [[ -f "$HOME/.bun/bin/bun" ]]; then
 	export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 
+# rust
+if [[ -f "$HOME/.cargo/env" ]]; then
+  . "$HOME/.cargo/env"
+fi
+
 # tailscale needs special handling on mac
 if [[ -f /Applications/Tailscale.app/Contents/MacOS/Tailscale ]]; then
 	alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
