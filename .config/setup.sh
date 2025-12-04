@@ -171,8 +171,8 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
 # NOTE: This may lead to unexpected behavior since some flags break this plugin. See https://github.com/Aloxaf/fzf-tab/issues/455
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
-# switch group using `<` and `>`
-zstyle ':fzf-tab:*' switch-group '<' '>'
+# switch group using tab
+zstyle ':fzf-tab:*' switch-group 'btab' 'tab'
 source "$HOME/somewhere/fzf-tab.plugin.zsh"
 
 # zsh-system-clipboard
