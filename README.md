@@ -16,11 +16,9 @@ git submodule update --init --remote --recursive
 
 ### Auto install
 
-1. Run the install.sh script, this will auto install brew as well
+#### Brew
 
-    ```
-    ~/.dotfiles/stow_ignored/scripts/install.sh
-    ```
+1. Run the [install-with-brew.sh](./stow_ignored/scripts/install-with-brew.sh) script, this will auto install brew as well
 
 1. Start your shell as zsh, tmux should launch
 
@@ -28,27 +26,29 @@ git submodule update --init --remote --recursive
 
 ### Manual Installation
 
+#### Brew
+
 1. Install brew
 
 1. Install dependencies
 
-    ```
-    xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/mac
-    xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/common
-    ```
+   ```
+   xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/mac
+   xargs -n brew install < $HOME/.dotfiles/stow_ignored/brews/common
+   ```
 
 1. To check whether everything is installed successfully, run
 
-    ```
-    ~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/mac
-    ~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/common
-    ```
+   ```
+   ~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/mac
+   ~/.dotfiles/stow_ignored/scripts/verify.sh $HOME/.dotfiles/stow_ignored/brews/common
+   ```
 
 1. Once everything is installed correctly run
 
-    ```
-    cd .dotfiles && stow .
-    ```
+   ```
+   cd .dotfiles && stow .
+   ```
 
 1. Start your shell as zsh, tmux should launch
 
