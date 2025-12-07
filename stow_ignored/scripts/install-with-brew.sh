@@ -48,3 +48,7 @@ cd ~/.dotfiles/ && stow .
 
 # bat refresh theme cache
 bat cache --build
+
+# tmux install plugins
+# not tested, check here if it doesn't work https://github.com/tmux-plugins/tpm/issues/6
+"$HOME"/.tmux/plugins/tpm/bin/install_plugins
