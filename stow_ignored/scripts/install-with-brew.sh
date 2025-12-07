@@ -5,8 +5,16 @@ sudo -v
 
 # Install zsh if on linux
 if [[ "$(uname)" == "Linux" ]]; then
-	sudo apt-get update
-	sudo apt install -y curl zsh gcc git xclip coreutils
+	read -rp "Enter your package install command (e.g. 'sudo apt install -y'): " INSTALL_CMD
+	read -rp "Enter your package update command (or leave blank to skip e.g. 'sudo apt-get update'): " UPDATE_CMD
+
+	# Run update if provided
+	if [[ -n "$UPDATE_CMD" ]]; then
+		eval "$UPDATE_CMD"
+	fi
+
+	# Install packages
+	eval "$INSTALL_CMD curl zsh gcc git xclip coreutils"
 fi
 
 # Download brew
