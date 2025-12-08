@@ -30,10 +30,12 @@
     "clock#day": {
         "timezone": "Asia/Kuala_Lumpur",
         "format": "󰃭  {:%a %d %b %Y}",
+        "tooltip": false,
     },
     "clock#time": {
         "timezone": "Asia/Kuala_Lumpur",
         "format": "  {:%H:%M}",
+        "tooltip": false,
     },
     "backlight": {
         "device": "intel_backlight",
@@ -49,6 +51,7 @@
             "",
             ""
         ],
+        "tooltip": false,
     },
     "battery": {
         "format": "{icon} {capacity}%",
@@ -89,11 +92,11 @@
             "warning": 20,
             "critical": 10,
         },
+        "tooltip": false,
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}%",
-        "tooltip-format": "Playing at {volume}%",
         "scroll-step": 5,
         "format-muted": " ",
         "format-icons": {
@@ -103,6 +106,7 @@
                 " "
             ],
         },
+        "tooltip": false,
     },
     "bluetooth": {
         "on-click": "systemsettings kcm_bluetooth",
@@ -134,9 +138,11 @@
     "custom/lock": {
         "on-click": "hyprlock",
         "format": "",
+        "tooltip": false,
     },
     "custom/power": {
         "on-click": "hyprctl dispatch exit",
         "format": "⏻",
+        "tooltip": false,
     },
 }
