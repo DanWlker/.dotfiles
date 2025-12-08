@@ -25,9 +25,8 @@
     },
     "clock": {
         "timezone": "Asia/Kuala_Lumpur",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "  {:%d/%m/%Y}",
-        "format": "  {:%H:%M}",
+        "format-alt": "  {}",
+        "format": "  {:%a %d %b %Y | %H:%M}",
     },
     "backlight": {
         "device": "intel_backlight",
