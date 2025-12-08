@@ -3,7 +3,8 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     // Choose the order of the modules
     "modules-left": [
-        "clock"
+        "clock#day",
+        "clock#time"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -23,10 +24,13 @@
         // },
         // "all-outputs": true,
     },
-    "clock": {
+    "clock#day": {
         "timezone": "Asia/Kuala_Lumpur",
-        "format-alt": "  {}",
-        "format": "  {:%a %d %b %Y | %H:%M}",
+        "format": "󰃭  {:%a %d %b %Y}",
+    },
+    "clock#time": {
+        "timezone": "Asia/Kuala_Lumpur",
+        "format": "  {:%H:%M}",
     },
     "backlight": {
         "device": "intel_backlight",
