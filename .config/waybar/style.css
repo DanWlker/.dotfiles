@@ -40,10 +40,12 @@
 #battery,
 #pulseaudio,
 #custom-lock,
+#bluetooth,
+#network,
 #custom-power {
 	background-color: @surface0;
 	padding: 0.5rem 1rem;
-	margin: 5px 0;
+	margin: 2px 0;
 }
 
 #clock {
@@ -62,7 +64,6 @@
 #battery {
 	color: @sky;
 	border-radius: 0px 1rem 1rem 0px;
-	margin-right: 1rem;
 }
 
 #battery.charging {
@@ -83,7 +84,17 @@
 	margin-left: 1rem;
 }
 
+#bluetooth {
+	border-radius: 1rem 0px 0px 1rem;
+	margin-left: 1rem;
+}
+
+#network {
+	border-radius: 0px 1rem 1rem 0px;
+}
+
 #custom-lock {
+	margin-left: 1rem;
 	border-radius: 1rem 0px 0px 1rem;
 	color: @lavender;
 }

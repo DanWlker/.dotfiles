@@ -13,7 +13,10 @@
         "pulseaudio",
         "backlight",
         "battery",
-        "tray",
+        //
+        "bluetooth",
+        "network",
+        //
         "custom/lock",
         "custom/power",
     ],
@@ -79,6 +82,18 @@
                 " "
             ],
         },
+    },
+    "bluetooth": {
+        "format": "{icon}",
+        "format-off": "󰂲",
+        "format-on": "󰂯",
+        "format-connected": "",
+    },
+    "network": {
+        "format": "{icon}",
+        "format-wifi": "󰤨 ",
+        "format-ethernet": "󰈁 ",
+        "format-disconnected": "󰤭 ",
     },
     "custom/lock": {
         "tooltip": false,
