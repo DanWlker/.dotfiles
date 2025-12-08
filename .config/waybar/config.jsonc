@@ -97,13 +97,11 @@
         "on-click": "systemsettings kcm_networkmanagement",
     },
     "custom/lock": {
-        "tooltip": false,
         "on-click": "hyprlock",
         "format": "",
     },
     "custom/power": {
-        "tooltip": false,
-        "on-click": "wlogout &",
+        "on-click": "hyprctl dispatch exit",
         "format": "⏻",
     },
 }
