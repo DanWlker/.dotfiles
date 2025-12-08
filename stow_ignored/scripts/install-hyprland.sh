@@ -12,4 +12,4 @@ if [[ -n "$UPDATE_CMD" ]]; then
 fi
 
 # Install packages
-eval "$INSTALL_CMD hyprland hyprlock hyprpaper"
+eval "$INSTALL_CMD hyprland hyprlock hyprpaper waybar"
