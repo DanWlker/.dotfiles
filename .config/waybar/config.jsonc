@@ -58,7 +58,6 @@
         "format": "{icon} {capacity}%",
         "format-charging": "󰂄",
         "format-plugged": "󰂄",
-        "format-alt": "{icon}",
         "format-icons": [
             "󰁺",
             "󰁻",
@@ -88,12 +87,14 @@
         "format-off": "󰂲",
         "format-on": "󰂯",
         "format-connected": "",
+        "on-click": "systemsettings kcm_bluetooth",
     },
     "network": {
         "format": "{icon}",
         "format-wifi": "󰤨 ",
         "format-ethernet": "󰈁 ",
         "format-disconnected": "󰤭 ",
+        "on-click": "systemsettings kcm_networkmanagement",
     },
     "custom/lock": {
         "tooltip": false,
