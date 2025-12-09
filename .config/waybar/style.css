@@ -1,38 +1,38 @@
 @import "mocha.css";
 
 * {
-	font-family: MapleMono NF;
-	font-size: 17px;
-	min-height: 0;
+  font-family: MapleMono NF;
+  font-size: 17px;
+  min-height: 0;
 }
 
 #waybar {
-	background: transparent;
-	color: @text;
-	margin: 5px 5px;
+  background: transparent;
+  color: @text;
+  margin: 5px 5px;
 }
 
 #workspaces {
-	border-radius: 1rem;
-	margin: 5px;
-	background-color: @surface0;
-	margin-left: 1rem;
+  border-radius: 1rem;
+  margin: 5px;
+  background-color: @surface0;
+  margin-left: 1rem;
 }
 
 #workspaces button {
-	color: @lavender;
-	border-radius: 1rem;
-	padding: 0.4rem;
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.4rem;
 }
 
 #workspaces button.active {
-	color: @green;
-	border-radius: 1rem;
+  color: @green;
+  border-radius: 1rem;
 }
 
 #workspaces button:hover {
-	color: @sapphire;
-	border-radius: 1rem;
+  color: @sapphire;
+  border-radius: 1rem;
 }
 
 #backlight,
@@ -43,64 +43,64 @@
 #bluetooth,
 #network,
 #custom-power {
-	background-color: @surface0;
-	padding: 0.5rem 1rem;
-	margin: 5px 0;
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
 }
 
 #clock {
-	border-radius: 1rem;
-	margin-left: 1rem;
+  border-radius: 1rem;
+  margin-left: 1rem;
 }
 
 #clock.time {
-	color: @blue;
+  color: @blue;
 }
 
 #clock.day {
-	color: @green;
+  color: @green;
 }
 
 #battery {
-	color: @sky;
-	border-radius: 0px 1rem 1rem 0px;
+  color: @sky;
+  border-radius: 0px 1rem 1rem 0px;
 }
 
 #battery.charging {
-	color: @green;
+  color: @green;
 }
 
 #battery.warning:not(.charging) {
-	color: @red;
+  color: @red;
 }
 
 #backlight {
-	color: @yellow;
+  color: @yellow;
 }
 
 #pulseaudio {
-	color: @maroon;
-	border-radius: 1rem 0px 0px 1rem;
-	margin-left: 1rem;
+  color: @maroon;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
 }
 
 #bluetooth {
-	border-radius: 1rem 0px 0px 1rem;
-	margin-left: 1rem;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
 }
 
 #network {
-	border-radius: 0px 1rem 1rem 0px;
+  border-radius: 0px 1rem 1rem 0px;
 }
 
 #custom-lock {
-	margin-left: 1rem;
-	border-radius: 1rem 0px 0px 1rem;
-	color: @lavender;
+  margin-left: 1rem;
+  border-radius: 1rem 0px 0px 1rem;
+  color: @lavender;
 }
 
 #custom-power {
-	margin-right: 1rem;
-	border-radius: 0px 1rem 1rem 0px;
-	color: @red;
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @red;
 }
