@@ -37,7 +37,7 @@
 
 popover {
   background: lighter(@window_bg_color);
-  border: 1px solid darker(@accent_bg_color);
+  /* border: 1px solid darker(@accent_bg_color); */
   border-radius: 18px;
   padding: 10px;
 }
@@ -61,7 +61,7 @@ scrollbar {
   background: @window_bg_color;
   padding: 20px;
   border-radius: 20px;
-  border: 1px solid darker(@accent_bg_color);
+  /* border: 1px solid darker(@accent_bg_color); */
 }
 
 .preview-box,
@@ -139,7 +139,7 @@ child:selected .item-box {
 }
 
 .preview {
-  border: 1px solid alpha(@accent_bg_color, 0.25);
+  /* border: 1px solid alpha(@accent_bg_color, 0.25); */
   /* padding: 10px; */
   border-radius: 10px;
   color: @theme_fg_color;
