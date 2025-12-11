@@ -1,0 +1,15 @@
+border-radius=8
+padding=10,15
+max-icon-size=32
+icon-border-radius=4
+# width=420
+
+# Colors
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#a6e3a1
+progress-color=over #313244
+
+[urgency=high]
+border-color=#fab387
