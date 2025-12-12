@@ -12,6 +12,7 @@ unmap H
 unmap L
 unmap r
 map h LinkHints.activateModeToOpenInNewTab
+map H LinkHints.activateModeToOpenInNewTab
 map <c-u> scrollPageUp
 map <c-d> scrollPageDown
 map <c-o> goBack
