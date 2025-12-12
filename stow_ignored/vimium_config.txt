@@ -1,0 +1,11 @@
+[keybinds]
+map h LinkHints.activateModeToOpenInNewTab
+map <c-u> scrollPageUp
+map <c-d> scrollPageDown
+unmap u
+unmap d
+unmap F
+unmap j
+unmap k
+map <s-left> goBack
+map <s-right> goForward
