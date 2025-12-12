@@ -2,6 +2,9 @@
 map h LinkHints.activateModeToOpenInNewTab
 map <c-u> scrollPageUp
 map <c-d> scrollPageDown
+map <s-left> goBack
+map <s-right> goForward
+map <c-r> reload
 unmap u
 unmap d
 unmap F
@@ -11,5 +14,4 @@ unmap J
 unmap K
 unmap H
 unmap L
-map <s-left> goBack
-map <s-right> goForward
+unmap r
