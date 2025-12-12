@@ -1,10 +1,6 @@
 [keybinds]
-map h LinkHints.activateModeToOpenInNewTab
-map <c-u> scrollPageUp
-map <c-d> scrollPageDown
-map <s-left> goBack
-map <s-right> goForward
-map <c-r> reload
+unmap x
+unmap X
 unmap u
 unmap d
 unmap F
@@ -15,3 +11,11 @@ unmap K
 unmap H
 unmap L
 unmap r
+map h LinkHints.activateModeToOpenInNewTab
+map <c-u> scrollPageUp
+map <c-d> scrollPageDown
+map <c-o> goBack
+map <c-i> goForward
+map <c-r> reload
+map u restoreTab
+map dd removeTab
