@@ -12,4 +12,4 @@ if [[ -n "$UPDATE_CMD" ]]; then
 fi
 
 # Install packages
-eval "$INSTALL_CMD hyprland hyprlock hyprpaper waybar walker hypridle elephant kitty brightnessctl wpctl playerctl uwsm"
+eval "$INSTALL_CMD hyprland hyprlock hyprpaper waybar walker hypridle elephant kitty brightnessctl wpctl playerctl uwsm fcitx5 fcitx5-chinese-addons"
