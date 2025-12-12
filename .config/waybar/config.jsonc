@@ -107,6 +107,7 @@
             ],
         },
         "tooltip": false,
+        "on-click": "amixer set Master toggle",
     },
     "bluetooth": {
         "on-click": "systemsettings kcm_bluetooth",
