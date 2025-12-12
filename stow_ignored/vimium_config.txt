@@ -3,6 +3,7 @@ unmap x
 unmap X
 unmap u
 unmap d
+unmap f
 unmap F
 unmap j
 unmap k
