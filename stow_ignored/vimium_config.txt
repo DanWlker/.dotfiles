@@ -7,5 +7,9 @@ unmap d
 unmap F
 unmap j
 unmap k
+unmap J
+unmap K
+unmap H
+unmap L
 map <s-left> goBack
 map <s-right> goForward
