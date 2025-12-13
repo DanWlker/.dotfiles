@@ -37,8 +37,10 @@
 }
 
 #workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1rem;
+  background: @mantle;
+  color: @text;
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 #backlight,
