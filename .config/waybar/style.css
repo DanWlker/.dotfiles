@@ -32,7 +32,7 @@
 
 #workspaces button.active {
   background: @pink;
-  color: @crust;
+  color: @base;
   border-radius: 1rem;
 }
 
