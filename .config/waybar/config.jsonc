@@ -115,7 +115,9 @@
         "format-disabled": "󰂲",
         "format-connected": "",
         "format-no-controller": "",
-        "tooltip-format": "Devices connected: {num_connections}",
+        // "tooltip-format": "Devices connected: {num_connections}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     },
     "network": {
         "on-click": "systemsettings kcm_networkmanagement",
