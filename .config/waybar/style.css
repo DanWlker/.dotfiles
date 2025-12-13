@@ -16,31 +16,34 @@
   border-radius: 1rem;
   margin: 5px;
   background-color: @surface0;
-  margin-left: 1rem;
+}
+
+#workspaces button:not(:last-child) {
+  margin-right: 4px;
 }
 
 #workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
-  padding: 0.4rem;
-}
-
-/* #workspaces button.active { */
-/*   color: @pink; */
-/*   border-radius: 1rem; */
-/* } */
-
-#workspaces button.active {
-  background: @pink;
-  color: @base;
-  border-radius: 1rem;
-}
-
-#workspaces button:hover {
-  background: @mantle;
   color: @text;
-  animation: ws_hover 20s ease-in-out 1;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  border-radius: 1rem;
+  padding: 0.4rem 0.3rem;
+  border: 2px solid transparent;
+}
+
+#workspaces button.active,
+#workspaces button.active:hover {
+  background: @text;
+  color: @surface0;
+  border-radius: 1rem;
+  border: 2px solid @text;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+#workspaces button:hover:not(.active) {
+  background: inherit;
+  box-shadow: none;
+  text-shadow: none;
+  border: 2px solid @text;
 }
 
 #backlight,
