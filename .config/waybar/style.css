@@ -25,8 +25,14 @@
   padding: 0.4rem;
 }
 
+/* #workspaces button.active { */
+/*   color: @pink; */
+/*   border-radius: 1rem; */
+/* } */
+
 #workspaces button.active {
-  color: @pink;
+  background: @pink;
+  color: @crust;
   border-radius: 1rem;
 }
 
