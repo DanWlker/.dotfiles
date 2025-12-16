@@ -14,7 +14,9 @@ if [[ "$(uname)" == "Linux" ]]; then
 	fi
 
 	# Install packages
-	eval "$INSTALL_CMD curl zsh gcc git xclip coreutils"
+	if [[ -n "$INSTALL_CMD" ]]; then
+		eval "$INSTALL_CMD curl zsh gcc git xclip coreutils"
+	fi
 fi
 
 # Download brew
