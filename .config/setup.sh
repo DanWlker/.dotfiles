@@ -145,8 +145,12 @@ if which asdf &>/dev/null; then
 	fi
 	export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 	fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-	. ~/.asdf/plugins/golang/set-env.zsh
-	export FLUTTER_ROOT="$(asdf where flutter)"
+	if [[ -f "${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh" ]]; then
+	  . ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
+	fi
+	if asdf where flutter >/dev/null 2>&1; then
+	  export FLUTTER_ROOT="$(asdf where flutter)"
+	fi
 fi
 
 # carapace
