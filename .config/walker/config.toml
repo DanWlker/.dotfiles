@@ -1,1 +1,2 @@
 theme = "mocha"
+app_launch_prefix = "uwsm app -- "
