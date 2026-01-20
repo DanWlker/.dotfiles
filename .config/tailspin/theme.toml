@@ -1,0 +1,5 @@
+[uuids]
+letter = { fg = "blue", italic = true }
+
+[pointers]
+letter = { fg = "blue", italic = true }
