@@ -161,6 +161,11 @@ if which carapace &>/dev/null; then
 	source <(carapace _carapace)
 fi
 
+# go
+if which go &>/dev/null; then
+	export PATH=$(go env GOPATH)/bin:$PATH
+fi
+
 # fzf-tab
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
