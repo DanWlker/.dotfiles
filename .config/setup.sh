@@ -153,6 +153,22 @@ if which asdf &>/dev/null; then
 	fi
 fi
 
+# mani
+if which mani &>/dev/null; then
+	# Define where to store mani completions
+	MANI_COMPLETIONS_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/mani/completions"
+
+	# Create and generate completion if missing
+	if [[ ! -d "$MANI_COMPLETIONS_DIR" ]]; then
+		echo "Creating completions for mani"
+		mkdir -p "$MANI_COMPLETIONS_DIR"
+		mani completion zsh > "$MANI_COMPLETIONS_DIR/_mani"
+	fi
+
+	# Add to fpath for autoloading
+	fpath=($MANI_COMPLETIONS_DIR $fpath)
+fi
+
 # carapace
 if which carapace &>/dev/null; then
 	export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
