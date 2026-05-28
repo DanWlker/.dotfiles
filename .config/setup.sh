@@ -179,6 +179,12 @@ if which go &>/dev/null; then
 	export PATH=$(go env GOPATH)/bin:$PATH
 fi
 
+# terraform
+if which terraform &>/dev/null; then
+	autoload -U +X bashcompinit && bashcompinit
+	complete -o nospace -C /Users/zixi.hee/homebrew/bin/terraform terraform
+fi
+
 # fzf-tab
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
