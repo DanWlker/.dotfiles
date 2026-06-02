@@ -76,12 +76,6 @@ if which gawk &>/dev/null; then
 	alias awk="gawk"
 fi
 
-# rsync
-if which rsync &>/dev/null; then
-	alias rcp="rsync --info=progress2 --info=name0"
-	alias rmv="rsync --info=progress2 --info=name0 --remove-source-files --archive"
-fi
-
 # nvim
 if which nvim &>/dev/null; then
 	alias vim="nvim"
