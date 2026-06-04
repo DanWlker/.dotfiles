@@ -119,6 +119,15 @@ if which yazi &>/dev/null; then
 	}
 fi
 
+# pnpm
+if [[ -d "$HOME/.local/share/pnpm" ]]; then
+	export PNPM_HOME="$HOME/.local/share/pnpm"
+	case ":$PATH:" in
+	  *":$PNPM_HOME/bin:"*) ;;
+	  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+	esac
+fi
+
 # lazygit
 if which lazygit &>/dev/null; then
 	alias l="lazygit"
