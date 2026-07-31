@@ -212,8 +212,8 @@ zstyle ':fzf-tab:*' switch-group 'btab' 'tab'
 source "$HOME/fzf-tab/fzf-tab.plugin.zsh"
 
 # zsh-system-clipboard
-if [[ -f ${ZSH_CUSTOM:-$HOME/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
-	source "${ZSH_CUSTOM:-$HOME/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
+if [[ -f $(brew --prefix 2>/dev/null)/share/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
+	source "$(brew --prefix 2>/dev/null)/share/zsh-system-clipboard/zsh-system-clipboard.zsh"
 fi
 
 # zsh-auto-suggestions
