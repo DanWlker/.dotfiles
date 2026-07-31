@@ -1,3 +1,5 @@
+HOMEBREW_PREFIX=$(brew --prefix)
+
 if which vivid &>/dev/null; then
 	export LS_COLORS="$(vivid generate catppuccin-mocha)"
 fi
@@ -194,7 +196,7 @@ if which terraform &>/dev/null; then
 fi
 
 # fzf-tab
-if [[ -f "$(brew --prefix)/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
+if [[ -f "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
 	# disable sort when completing `git checkout`
 	zstyle ':completion:*:git-checkout:*' sort false
 	# set descriptions format to enable group support
@@ -210,30 +212,30 @@ if [[ -f "$(brew --prefix)/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
 	zstyle ':fzf-tab:*' use-fzf-default-opts yes
 	# switch group using tab
 	zstyle ':fzf-tab:*' switch-group 'btab' 'tab'
-	source "$(brew --prefix)/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
+	source "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
 fi
 
 # zsh-system-clipboard
-if [[ -f $(brew --prefix 2>/dev/null)/share/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
-	source "$(brew --prefix 2>/dev/null)/share/zsh-system-clipboard/zsh-system-clipboard.zsh"
+if [[ -f $HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
+	source "$HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh"
 fi
 
 # zsh-auto-suggestions
-if [[ -f "$(brew --prefix 2>/dev/null)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-	source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+	source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	unset ZSH_AUTOSUGGEST_USE_ASYNC # To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
 fi
 
 # zsh-history-substring-search
-if [[ -f "$(brew --prefix 2>/dev/null)/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]]; then
+if [[ -f "$HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]]; then
 	export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='none'
 	export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='none'
-	source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+	source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 	bindkey '^[[A' history-substring-search-up
 	bindkey '^[[B' history-substring-search-down
 fi
 
 # zsh-patina
-if [[ -f "$(brew --prefix 2>/dev/null)/bin/zsh-patina" ]]; then
-	eval "$($(brew --prefix)/bin/zsh-patina activate)"
+if [[ -f "$HOMEBREW_PREFIX/bin/zsh-patina" ]]; then
+	eval "$($HOMEBREW_PREFIX/bin/zsh-patina activate)"
 fi
