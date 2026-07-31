@@ -209,7 +209,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # switch group using tab
 zstyle ':fzf-tab:*' switch-group 'btab' 'tab'
-source "$HOME/somewhere/fzf-tab.plugin.zsh"
+source "$HOME/fzf-tab/fzf-tab.plugin.zsh"
 
 # zsh-system-clipboard
 if [[ -f ${ZSH_CUSTOM:-$HOME/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
@@ -222,8 +222,7 @@ if [[ -f "$(brew --prefix 2>/dev/null)/share/zsh-autosuggestions/zsh-autosuggest
 	unset ZSH_AUTOSUGGEST_USE_ASYNC # To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
 fi
 
-# zsh-syntax-highlighting (Note this must be the near? last command in .zshrc)
-if [[ -f ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh ]]; then
-	source "$HOME/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh"
-	source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zsh-patina
+if [[ -f "$(brew --prefix 2>/dev/null)/bin/zsh-patina" ]]; then
+	eval "$($(brew --prefix)/bin/zsh-patina activate)"
 fi
