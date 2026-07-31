@@ -41,7 +41,10 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt hist_expire_dups_first
 setopt globdots
+setopt nobeep
+setopt numeric_glob_sort
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
@@ -50,6 +53,8 @@ autoload -Uz compinit && compinit
 bindkey -v
 export KEYTIMEOUT=1
 bindkey -v '^?' backward-delete-char # fix backspace sometimes not working
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive completion
 
 # aliases
 alias whoami="whoami && curl ident.me"
@@ -70,7 +75,7 @@ cherrypickremote() {
 export PATH="$HOME/.local/bin:$PATH"
 
 # Setup commands
-source ~/.config/setup.sh
-if [ -f ~/.local/setup.sh ]; then
-	source ~/.local/setup.sh
+source ~/.config/setup.zsh
+if [ -f ~/.local/setup.zsh ]; then
+	source ~/.local/setup.zsh
 fi
