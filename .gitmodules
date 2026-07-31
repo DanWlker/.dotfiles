@@ -1,6 +1,3 @@
-[submodule "somewhere"]
-	path = fzf-tab
-	url = https://github.com/Aloxaf/fzf-tab
 [submodule "DanWlker/nvim.git"]
 	path = .config/nvim
 	url = https://github.com/DanWlker/nvim.git
