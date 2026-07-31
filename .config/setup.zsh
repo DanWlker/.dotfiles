@@ -13,9 +13,9 @@ if which fzf &>/dev/null; then
 	source <(fzf --zsh)
 fi
 
-# git
-if which btop &>/dev/null; then
-	alias gitgraph="LESS='-i' git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=local --branches"
+# serie
+if which serie &>/dev/null; then
+	alias gitgraph="serie"
 fi
 
 # btop

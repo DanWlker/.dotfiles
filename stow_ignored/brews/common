@@ -6,6 +6,7 @@ carapace
 croc
 difftastic
 direnv
+droast
 dust
 eza
 fblog
@@ -15,6 +16,8 @@ git-delta
 imagemagick
 jq
 just
+k6
+kubecolor
 lazygit
 neovim
 ocrmypdf
@@ -24,6 +27,8 @@ powerlevel10k
 presenterm
 pstree
 ripgrep
+rtk
+serie
 sevenzip
 sshs
 stow
@@ -38,6 +43,7 @@ vivid
 websocat
 yazi
 yq
+yt-dlp
 zoxide
 zsh-autosuggestions
 zsh-patina
