@@ -222,6 +222,15 @@ if [[ -f "$(brew --prefix 2>/dev/null)/share/zsh-autosuggestions/zsh-autosuggest
 	unset ZSH_AUTOSUGGEST_USE_ASYNC # To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
 fi
 
+# zsh-history-substring-search
+if [[ -f "$(brew --prefix 2>/dev/null)/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]]; then
+	export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='none'
+	export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='none'
+	source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+	bindkey '^[[A' history-substring-search-up
+	bindkey '^[[B' history-substring-search-down
+fi
+
 # zsh-patina
 if [[ -f "$(brew --prefix 2>/dev/null)/bin/zsh-patina" ]]; then
 	eval "$($(brew --prefix)/bin/zsh-patina activate)"
