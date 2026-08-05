@@ -32,6 +32,8 @@ if which fzf &>/dev/null; then
 	export FZF_DEFAULT_OPTS="
 		--multi
 		--info=inline
+		--preview-window=:hidden
+		--bind '?:toggle-preview'
 		--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
 		--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8
 		--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC
@@ -231,8 +233,12 @@ if [[ -f "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
 	zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 -a --color=always $realpath'
 	# NOTE: This may lead to unexpected behavior since some flags break this plugin. See https://github.com/Aloxaf/fzf-tab/issues/455
 	zstyle ':fzf-tab:*' use-fzf-default-opts yes
-	# switch group using tab
-	zstyle ':fzf-tab:*' switch-group 'btab' 'tab'
+	# switch group using < >
+	zstyle ':fzf-tab:*' switch-group '<' '>'
+	# use tab to multi select, matching fzf defaults
+	zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle'
+	# use tmux popups
+	# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 	source "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
 fi
 
