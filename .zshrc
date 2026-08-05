@@ -67,10 +67,6 @@ mkcd() {
 	[[ $# -ne 1 ]] && return 1
 	mkdir -p -- "$1" && cd -- "$1" || return 1
 }
-cherrypickremote() {
-	git fetch "$1" "$2"
-	git cherry-pick FETCH_HEAD
-}
 
 # Local dependencies
 export PATH="$HOME/.local/bin:$PATH"
