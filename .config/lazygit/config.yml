@@ -8,25 +8,38 @@ gui:
       - bold
     inactiveBorderColor:
       - "#a6adc8"
+    searchingActiveBorderColor:
+      - "#f9e2af"
     optionsTextColor:
       - "#89b4fa"
     selectedLineBgColor:
       - "#313244"
-    cherryPickedCommitBgColor:
-      - "#45475a"
+    inactiveViewSelectedLineBgColor:
+      - "#6c7086"
     cherryPickedCommitFgColor:
       - "#a6e3a1"
+    cherryPickedCommitBgColor:
+      - "#45475a"
+    markedBaseCommitFgColor:
+      - "#89b4fa"
+    markedBaseCommitBgColor:
+      - "#f9e2af"
     unstagedChangesColor:
       - "#f38ba8"
     defaultFgColor:
       - "#cdd6f4"
-    searchingActiveBorderColor:
-      - "#f9e2af"
+
   authorColors:
     "*": "#b4befe"
 git:
   log:
     showWholeGraph: true
+  branchLogCmd: "git log --graph --color --pretty=format:'%C(auto)%h%C(reset) %C(white)-%C(reset) %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n %C(white)⤷%C(reset) %s %C(241)- %aN <%aE>%C(reset)%n%w(0,7,7)%+(trailers:only,unfold)' {{branchName}}"
+  # https://github.com/alfunx/.dotfiles/blob/master/.gitconfig#L218-L224
+  # branchLogCmd: "git log --graph --color --pretty=tformat:'%C(auto)%h%C(reset)%C(auto)%d%C(reset) %s %C(italic blue)%ad%C(reset) %C(241)%aN%C(reset)' {{branchName}}"
+  allBranchesLogCmds:
+    - "git log --graph --all --color --pretty=format:'%C(auto)%h%C(reset)%C(auto)%d%C(reset) %s %C(italic blue)%ad%C(reset) %C(241)%aN%C(reset)'"
+    - "git log --graph --all --color --pretty=format:'%C(auto)%h%C(reset) %C(white)-%C(reset) %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n %C(white)⤷%C(reset) %s %C(241)- %aN <%aE>%C(reset)%n%w(0,7,7)%+(trailers:only,unfold)'"
   diffRenderers:
     - command: delta --dark --paging=never -n --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" --file-style="omit"
     - command: delta --paging=never -n -s --file-style="omit"
