@@ -34,12 +34,12 @@ gui:
 git:
   log:
     showWholeGraph: true
-  branchLogCmd: "git log --graph --color --pretty=format:'%C(auto)%h%C(reset) %C(white)-%C(reset) %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n %C(white)⤷%C(reset) %s %C(241)- %aN <%aE>%C(reset)%n%w(0,7,7)%+(trailers:only,unfold)' {{branchName}}"
+  branchLogCmd: "git log --graph --color --pretty=lt {{branchName}}"
   # https://github.com/alfunx/.dotfiles/blob/master/.gitconfig#L218-L224
   # branchLogCmd: "git log --graph --color --pretty=tformat:'%C(auto)%h%C(reset)%C(auto)%d%C(reset) %s %C(italic blue)%ad%C(reset) %C(241)%aN%C(reset)' {{branchName}}"
   allBranchesLogCmds:
-    - "git log --graph --all --color --pretty=format:'%C(auto)%h%C(reset)%C(auto)%d%C(reset) %s %C(italic blue)%ad%C(reset) %C(241)%aN%C(reset)'"
-    - "git log --graph --all --color --pretty=format:'%C(auto)%h%C(reset) %C(white)-%C(reset) %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n %C(white)⤷%C(reset) %s %C(241)- %aN <%aE>%C(reset)%n%w(0,7,7)%+(trailers:only,unfold)'"
+    - "git log --graph --all --color --pretty=lo"
+    - "git log --graph --all --color --pretty=lt"
   diffRenderers:
     - command: delta --dark --paging=never -n --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" --file-style="omit"
     - command: delta --paging=never -n -s --file-style="omit"
