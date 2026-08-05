@@ -14,20 +14,28 @@ if which fzf &>/dev/null; then
 		# ALT-C's command
 		export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 		_fzf_compgen_path() {
-		    fd . "$1"
+			fd . "$1"
 		}
 		_fzf_compgen_dir() {
-		    fd --type d . "$1"
+			fd --type d . "$1"
 		}
 	fi
 	if which rg &>/dev/null; then
-	  fgrep() {
-	    if [ ! "$#" -gt 0 ]; then
-	      echo "Need a string to search for!";
-	      return 1;
-	    fi
-	    rg --smart-case --hidden --files-with-matches --no-messages -g "!node_modules" -g "!.git" "$1" | fzf --multi $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
-	  }
+		fgrep() {
+			if [ ! "$" -gt 0 ]; then
+				echo "Need a string to search for!"
+				return 1
+			fi
+			rg --smart-case --hidden --files-with-matches --no-messages -g "!node_modules" -g "!.git" "$1" | fzf --multi $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
+		}
+	else
+		fgrep() {
+			if [ ! "$" -gt 0 ]; then
+				echo "Need a string to search for!"
+				return 1
+			fi
+			grep -rIl --exclude-dir=node_modules --exclude-dir=.git -- "$1" . | fzf --multi $FZF_PREVIEW_WINDOW --preview "grep -n --color=always -C 10 -- '$1' {}"
+		}
 	fi
 	export FZF_DEFAULT_OPTS="
 		--multi
@@ -129,7 +137,7 @@ fi
 
 # rust
 if [[ -f "$HOME/.cargo/env" ]]; then
-  . "$HOME/.cargo/env"
+	. "$HOME/.cargo/env"
 fi
 
 # tailscale needs special handling on mac
@@ -153,8 +161,8 @@ fi
 if [[ -d "$HOME/.local/share/pnpm" ]]; then
 	export PNPM_HOME="$HOME/.local/share/pnpm"
 	case ":$PATH:" in
-	  *":$PNPM_HOME/bin:"*) ;;
-	  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+	*":$PNPM_HOME/bin:"*) ;;
+	*) export PATH="$PNPM_HOME/bin:$PATH" ;;
 	esac
 fi
 
@@ -179,7 +187,7 @@ if which asdf &>/dev/null; then
 	export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 	fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 	if asdf where flutter >/dev/null 2>&1; then
-	  export FLUTTER_ROOT="$(asdf where flutter)"
+		export FLUTTER_ROOT="$(asdf where flutter)"
 	fi
 fi
 
@@ -192,7 +200,7 @@ if which mani &>/dev/null; then
 	if [[ ! -d "$MANI_COMPLETIONS_DIR" ]]; then
 		echo "Creating completions for mani"
 		mkdir -p "$MANI_COMPLETIONS_DIR"
-		mani completion zsh > "$MANI_COMPLETIONS_DIR/_mani"
+		mani completion zsh >"$MANI_COMPLETIONS_DIR/_mani"
 	fi
 
 	# Add to fpath for autoloading
