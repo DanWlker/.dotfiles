@@ -54,7 +54,7 @@ fi
 
 # ripgrep (replaces grep)
 if which rg &>/dev/null; then
-	alias grep="rg --smart-case"
+	alias grep='rg --smart-case -g "!node_modules" -g "!.git"'
 fi
 
 # wget
