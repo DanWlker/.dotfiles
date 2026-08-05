@@ -6,12 +6,39 @@ fi
 
 # fzf
 if which fzf &>/dev/null; then
-	export FZF_DEFAULT_OPTS=" \
-		--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
-		--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
-		--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
-		--color=selected-bg:#45475A \
-		--color=border:#6C7086,label:#CDD6F4"
+	if which fd &>/dev/null; then
+		# https://medium.com/better-programming/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d
+		export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
+		# CTRL-T's command
+		export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+		# ALT-C's command
+		export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+		_fzf_compgen_path() {
+		    fd . "$1"
+		}
+		_fzf_compgen_dir() {
+		    fd --type d . "$1"
+		}
+	fi
+	if which rg &>/dev/null; then
+	  fgrep() {
+	    if [ ! "$#" -gt 0 ]; then
+	      echo "Need a string to search for!";
+	      return 1;
+	    fi
+	    rg --smart-case --hidden --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
+	  }
+	fi
+	if
+	export FZF_DEFAULT_OPTS="
+		--info=inline
+		--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+		--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8
+		--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC
+		--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8
+		--color=selected-bg:#45475A
+		--color=border:#6C7086,label:#CDD6F4
+		"
 	source <(fzf --zsh)
 fi
 
@@ -53,7 +80,6 @@ fi
 # eza (replaces ls)
 if which eza &>/dev/null; then
 	alias ls="eza --icons=auto"
-	alias tree="eza --icons=auto --tree"
 fi
 
 # bat (replaces cat)
