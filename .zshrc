@@ -64,7 +64,8 @@ alias rm="rm -Iv"
 alias ln='ln -iv'
 alias mkdir="mkdir -pv"
 mkcd() {
-	mkdir "$1" && cd "$1"
+	[[ $# -ne 1 ]] && return 1
+	mkdir -p -- "$1" && cd -- "$1" || return 1
 }
 cherrypickremote() {
 	git fetch "$1" "$2"
