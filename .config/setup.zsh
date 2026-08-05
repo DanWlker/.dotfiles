@@ -26,7 +26,7 @@ if which fzf &>/dev/null; then
 	      echo "Need a string to search for!";
 	      return 1;
 	    fi
-	    rg --smart-case --hidden --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
+	    rg --smart-case --hidden --files-with-matches --no-messages -g "!node_modules" -g "!.git" "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
 	  }
 	fi
 	if
