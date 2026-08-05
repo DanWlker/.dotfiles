@@ -13,6 +13,7 @@ fblog
 fd
 fzf
 git-delta
+hyperfine
 imagemagick
 jq
 just

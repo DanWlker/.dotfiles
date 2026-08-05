@@ -42,11 +42,6 @@ if which fzf &>/dev/null; then
 	source <(fzf --zsh)
 fi
 
-# serie
-if which serie &>/dev/null; then
-	alias gitgraph="serie"
-fi
-
 # btop
 if which btop &>/dev/null; then
 	alias top="btop"
