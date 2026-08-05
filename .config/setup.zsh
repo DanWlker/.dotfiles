@@ -220,8 +220,6 @@ fi
 
 # fzf-tab
 if [[ -f "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
-	# disable sort when completing `git checkout`
-	zstyle ':completion:*:git-checkout:*' sort false
 	# set descriptions format to enable group support
 	# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
 	zstyle ':completion:*:descriptions' format '[%d]'
