@@ -6,8 +6,8 @@ fi
 
 # fzf
 if which fzf &>/dev/null; then
+	# https://medium.com/better-programming/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d
 	if which fd &>/dev/null; then
-		# https://medium.com/better-programming/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d
 		export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
 		# CTRL-T's command
 		export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -26,11 +26,11 @@ if which fzf &>/dev/null; then
 	      echo "Need a string to search for!";
 	      return 1;
 	    fi
-	    rg --smart-case --hidden --files-with-matches --no-messages -g "!node_modules" -g "!.git" "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
+	    rg --smart-case --hidden --files-with-matches --no-messages -g "!node_modules" -g "!.git" "$1" | fzf --multi $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
 	  }
 	fi
-	if
 	export FZF_DEFAULT_OPTS="
+		--multi
 		--info=inline
 		--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
 		--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8
