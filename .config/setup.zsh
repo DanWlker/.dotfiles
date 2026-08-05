@@ -237,6 +237,8 @@ if [[ -f "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
 	zstyle ':fzf-tab:*' switch-group '<' '>'
 	# use tab to multi select, matching fzf defaults
 	zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle'
+	# should have min height so previews can show up
+	zstyle ':fzf-tab:*' fzf-flags --height=60%
 	# use tmux popups
 	# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 	source "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
