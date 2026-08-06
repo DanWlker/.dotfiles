@@ -48,7 +48,6 @@ setopt numeric_glob_sort
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
-autoload -Uz compinit && compinit
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -76,3 +75,6 @@ source ~/.config/setup.zsh
 if [ -f ~/.local/setup.zsh ]; then
 	source ~/.local/setup.zsh
 fi
+
+# run compinit only after all completion definitions are set up
+autoload -Uz compinit && compinit

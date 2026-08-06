@@ -249,6 +249,11 @@ if [[ -f "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
 	source "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
 fi
 
+# zsh-completions
+if [[ -d $HOMEBREW_PREFIX/share/zsh-completions ]]; then
+	FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
+fi
+
 # zsh-system-clipboard
 if [[ -f $HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
 	source "$HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh"
