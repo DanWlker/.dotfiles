@@ -34,26 +34,25 @@ fi
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=120000 # https://zsh.sourceforge.io/Doc/Release/Options.html#index-HIST_005fEXPIRE_005fDUPS_005fFIRST
 export SAVEHIST=100000
-setopt share_history
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-setopt hist_expire_dups_first
-setopt globdots
-setopt nobeep
-setopt numeric_glob_sort
-setopt complete_in_word  # Complete from both ends of a word
-setopt always_to_end     # Move cursor to the end of a completed word
-setopt path_dirs         # Perform path search even on command names with slashes
-setopt auto_menu         # Show completion menu on a succesive tab press
-setopt auto_list         # Automatically list choices on ambiguous completion
-setopt auto_remove_slash # Remove trailing slashes
-setopt auto_param_slash  # If completed parameter is a directory, add a trailing slash
-setopt glob_complete     # Show completions for glob instead of expanding
-unsetopt menu_complete   # Do not autoselect the first completion entry
-unsetopt flow_control    # Disable start/stop characters in shell editor
+setopt share_history          # Import new commands from $HISTFILE and append yours to it as they're typed — history is live-shared across every open shell. Supersedes inc_append_history (docs say to turn that one off if this is set).
+setopt hist_ignore_space      # Don't record lines whose first character is a space.
+setopt hist_ignore_all_dups   # When a new line duplicates an older one, drop the OLDER entry — anywhere in history, not just the previous event. Result: one copy of each command, always at the newest spot.
+setopt hist_save_no_dups      # When writing the history file, omit older commands that duplicate newer ones. Mostly a safety net here (see below).
+setopt hist_find_no_dups      # When searching history in the line editor (Ctrl+R, arrow search), don't show a line already found, even if the duplicates aren't adjacent.
+setopt hist_expire_dups_first # When history is full and must be trimmed, discard the oldest duplicated event before sacrificing a unique one. Requires HISTSIZE > SAVEHIST to have any cushion to work in.
+setopt globdots               # Alias for GLOB_DOTS: globs no longer require a leading '.' to be typed explicitly, so '*' matches dotfiles too. (Careful: 'rm *' and 'mv * dir' now hit .git, .env, etc.)
+setopt nobeep                 # Inverts BEEP — no terminal bell on line-editor errors.
+setopt numeric_glob_sort      # Sort numeric filenames matched by a glob numerically rather than lexicographically: file2 before file10, not after.
+setopt complete_in_word       # Complete from both ends of a word
+setopt always_to_end          # Move cursor to the end of a completed word
+setopt path_dirs              # Perform path search even on command names with slashes
+setopt auto_menu              # Show completion menu on a succesive tab press
+setopt auto_list              # Automatically list choices on ambiguous completion
+setopt auto_remove_slash      # Remove trailing slashes
+setopt auto_param_slash       # If completed parameter is a directory, add a trailing slash
+setopt glob_complete          # Show completions for glob instead of expanding
+unsetopt menu_complete        # Do not autoselect the first completion entry
+unsetopt flow_control         # Disable start/stop characters in shell editor
 unsetopt case_glob
 autoload -z edit-command-line
 zle -N edit-command-line
