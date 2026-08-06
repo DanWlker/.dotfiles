@@ -32,9 +32,8 @@ fi
 
 # options
 export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=500000
-export SAVEHIST=500000
-setopt inc_append_history
+export HISTSIZE=120000 # https://zsh.sourceforge.io/Doc/Release/Options.html#index-HIST_005fEXPIRE_005fDUPS_005fFIRST
+export SAVEHIST=100000
 setopt share_history
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
@@ -45,6 +44,17 @@ setopt hist_expire_dups_first
 setopt globdots
 setopt nobeep
 setopt numeric_glob_sort
+setopt complete_in_word  # Complete from both ends of a word
+setopt always_to_end     # Move cursor to the end of a completed word
+setopt path_dirs         # Perform path search even on command names with slashes
+setopt auto_menu         # Show completion menu on a succesive tab press
+setopt auto_list         # Automatically list choices on ambiguous completion
+setopt auto_remove_slash # Remove trailing slashes
+setopt auto_param_slash  # If completed parameter is a directory, add a trailing slash
+setopt glob_complete     # Show completions for glob instead of expanding
+unsetopt menu_complete   # Do not autoselect the first completion entry
+unsetopt flow_control    # Disable start/stop characters in shell editor
+unsetopt case_glob
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
@@ -53,7 +63,8 @@ bindkey -v
 export KEYTIMEOUT=1
 bindkey -v '^?' backward-delete-char # fix backspace sometimes not working
 zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive completion
+# case insensitive matching + ignore separators (. _ -) + substring matching
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # aliases
 alias whoami="whoami && curl ident.me"
