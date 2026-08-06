@@ -1,13 +1,14 @@
 HOMEBREW_PREFIX=$(brew --prefix)
 
-if which vivid &>/dev/null; then
+# https://stackoverflow.com/a/677212
+if command -v vivid >/dev/null 2>&1; then
 	export LS_COLORS="$(vivid generate catppuccin-mocha)"
 fi
 
 # fzf
-if which fzf &>/dev/null; then
+if command -v fzf >/dev/null 2>&1; then
 	# https://medium.com/better-programming/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d
-	if which fd &>/dev/null; then
+	if command -v fd >/dev/null 2>&1; then
 		export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
 		# CTRL-T's command
 		export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -20,7 +21,7 @@ if which fzf &>/dev/null; then
 			fd --type d . "$1"
 		}
 	fi
-	if which rg &>/dev/null; then
+	if command -v rg >/dev/null 2>&1; then
 		fgrep() {
 			if [ ! "$" -gt 0 ]; then
 				echo "Need a string to search for!"
@@ -53,75 +54,75 @@ if which fzf &>/dev/null; then
 fi
 
 # btop
-if which btop &>/dev/null; then
+if command -v btop >/dev/null 2>&1; then
 	alias top="btop"
 fi
 
 # delta
-if which delta &>/dev/null; then
+if command -v delta >/dev/null 2>&1; then
 	alias diff="delta --side-by-side"
 fi
 
 # ripgrep (replaces grep)
-if which rg &>/dev/null; then
+if command -v rg >/dev/null 2>&1; then
 	alias grep='rg --smart-case -g "!node_modules" -g "!.git"'
 fi
 
 # wget
-if which wget &>/dev/null; then
+if command -v wget >/dev/null 2>&1; then
 	alias wget='wget -c'
 fi
 
 # fd (replaces find)
-if which fd &>/dev/null; then
+if command -v fd >/dev/null 2>&1; then
 	alias find="fd"
 fi
 
 # dust (replaces du)
-if which dust &>/dev/null; then
+if command -v dust >/dev/null 2>&1; then
 	alias du="dust"
 fi
 
 # eza (replaces ls)
-if which eza &>/dev/null; then
-	alias ls="eza --icons=auto"
+if command -v eza >/dev/null 2>&1; then
+	alias ls="eza --icons=auto --group-directories-first"
 fi
 
 # bat (replaces cat)
-if which bat &>/dev/null; then
+if command -v bat >/dev/null 2>&1; then
 	# bat will auto remove numbers if piped or subshell
 	alias cat="bat"
 	alias less='bat --paging=always'
 fi
 
 # zoxide (replaces cd)
-if which zoxide &>/dev/null; then
+if command -v zoxide >/dev/null 2>&1; then
 	eval "$(zoxide init zsh --cmd cd)"
 fi
 
 # direnv
-if which direnv &>/dev/null; then
+if command -v direnv >/dev/null 2>&1; then
 	eval "$(direnv hook zsh)"
 fi
 
 # gnu sed (replaces sed)
-if which gsed &>/dev/null; then
+if command -v gsed >/dev/null 2>&1; then
 	alias sed="gsed"
 fi
 
 # gawk (replaces awk)
-if which gawk &>/dev/null; then
+if command -v gawk >/dev/null 2>&1; then
 	alias awk="gawk"
 fi
 
 # nvim
-if which nvim &>/dev/null; then
+if command -v nvim >/dev/null 2>&1; then
 	alias vim="nvim"
 	alias vi="nvim"
 fi
 
 # xclip
-if which xclip &>/dev/null; then
+if command -v xclip >/dev/null 2>&1; then
 	alias xclip="xclip -se c"
 fi
 
@@ -146,7 +147,7 @@ if [[ -f /Applications/Tailscale.app/Contents/MacOS/Tailscale ]]; then
 fi
 
 # yazi
-if which yazi &>/dev/null; then
+if command -v yazi >/dev/null 2>&1; then
 	y() {
 		local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 		yazi "$@" --cwd-file="$tmp"
@@ -167,18 +168,18 @@ if [[ -d "$HOME/.local/share/pnpm" ]]; then
 fi
 
 # lazygit
-if which lazygit &>/dev/null; then
+if command -v lazygit >/dev/null 2>&1; then
 	alias l="lazygit"
 fi
 
 # kubectl
-if which kubectl &>/dev/null && which kubecolor &>/dev/null; then
+if command -v kubectl &>/dev/null 2>&1 && command -v kubecolor >/dev/null 2>&1; then
 	alias kubectl="kubecolor"
 	alias k="kubectl"
 fi
 
 # asdf
-if which asdf &>/dev/null; then
+if command -v asdf >/dev/null 2>&1; then
 	if [[ ! -d "${ASDF_DATA_DIR:-$HOME/.asdf}/completions" ]]; then
 		echo "Creating completions for asdf"
 		mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
@@ -192,7 +193,7 @@ if which asdf &>/dev/null; then
 fi
 
 # mani
-if which mani &>/dev/null; then
+if command -v mani >/dev/null 2>&1; then
 	# Define where to store mani completions
 	MANI_COMPLETIONS_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/mani/completions"
 
@@ -208,7 +209,7 @@ if which mani &>/dev/null; then
 fi
 
 # carapace
-if which carapace &>/dev/null; then
+if command -v carapace >/dev/null 2>&1; then
 	export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 	# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 	zstyle ':fzf-tab:*' query-string ''
@@ -216,12 +217,12 @@ if which carapace &>/dev/null; then
 fi
 
 # go
-if which go &>/dev/null; then
+if command -v go >/dev/null 2>&1; then
 	export PATH=$(go env GOPATH)/bin:$PATH
 fi
 
 # terraform
-if which terraform &>/dev/null; then
+if command -v terraform >/dev/null 2>&1; then
 	autoload -U +X bashcompinit && bashcompinit
 	complete -o nospace -C /Users/zixi.hee/homebrew/bin/terraform terraform
 fi
