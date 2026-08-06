@@ -38,13 +38,14 @@ if command -v fzf >/dev/null 2>&1; then
 			grep -rIl --exclude-dir=node_modules --exclude-dir=.git -- "$1" . | fzf --multi $FZF_PREVIEW_WINDOW --preview "grep -n --color=always -C 10 -- '$1' {}"
 		}
 	fi
+	# remove bg in colors
 	export FZF_DEFAULT_OPTS="
 		--multi
 		--info=inline
 		--preview-window=:hidden
 		--bind '?:toggle-preview'
 		--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
-		--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8
+		--color=bg+:#313244,spinner:#F5E0DC,hl:#F38BA8
 		--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC
 		--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8
 		--color=selected-bg:#45475A
