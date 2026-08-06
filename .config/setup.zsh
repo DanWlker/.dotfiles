@@ -175,7 +175,6 @@ fi
 # kubectl
 if command -v kubectl &>/dev/null 2>&1 && command -v kubecolor >/dev/null 2>&1; then
 	alias kubectl="kubecolor"
-	alias k="kubectl"
 fi
 
 # asdf
