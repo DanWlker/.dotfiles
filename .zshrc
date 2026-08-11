@@ -72,6 +72,9 @@ alias mv="mv -iv"
 alias rm="rm -Iv"
 alias ln='ln -iv'
 alias mkdir="mkdir -pv"
+# courtesy of: https://www.hypertesto.me/en/blog/2026/08/curlese-five-years-later/
+alias curlopsy="curl -o /dev/null -s -w 'dns:%{time_namelookup} connect:%{time_connect} tls:%{time_appconnect} total:%{time_total} http:%{http_code}\n'"
+alias curl='curl -v --trace-time -w "\n======\nTotal Took: %{time_total} | TCP connection took: %{time_connect} | TLS/SSL connection took: %{time_appconnect}\n=====\n"'
 mkcd() {
 	[[ $# -ne 1 ]] && return 1
 	mkdir -p -- "$1" && cd -- "$1" || return 1
