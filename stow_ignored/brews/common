@@ -13,6 +13,7 @@ fblog
 fd
 fzf
 git-delta
+Giammarco-Ferranti/deja/deja
 hyperfine
 imagemagick
 jq
@@ -47,6 +48,5 @@ yazi
 yq
 yt-dlp
 zoxide
-zsh-autosuggestions
 zsh-patina
 zsh-system-clipboard

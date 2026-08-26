@@ -259,10 +259,25 @@ if [[ -r $HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh ]]
 	source "$HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh"
 fi
 
-# zsh-auto-suggestions
-if [[ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-	unset ZSH_AUTOSUGGEST_USE_ASYNC # To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
-	source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# deja (zsh-autosuggestions replacement)
+# Sourcing the cached script keeps deja off your shell startup path; the
+# eval is only the first-run bootstrap, and deja refreshes the file itself
+# when you upgrade.
+#
+# Import your existing zsh history with:
+#
+#   deja import
+#
+# Upgrading? The daemon outlives shell sessions, so replace it with:
+#
+#   deja daemon --restart
+if command -v deja >/dev/null 2>&1; then
+	export DEJA_WORD_ACCEPT_KEY= DEJA_CYCLE_KEY= DEJA_TOGGLE_KEY= DEJA_CYCLE_FUZZY_KEY= DEJA_CYCLE_FUZZY_BACK_KEY= DEJA_TOGGLE_EMPTY_KEY=
+	if [[ -r "$HOME/.local/share/deja/init.zsh" ]]; then
+		source "$HOME/.local/share/deja/init.zsh"
+	else
+		eval "$(deja init zsh)"
+	fi
 fi
 
 # zsh-history-substring-search
