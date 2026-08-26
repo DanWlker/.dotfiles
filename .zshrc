@@ -25,9 +25,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [[ -f $(brew --prefix 2>/dev/null)/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+if [[ -r $(brew --prefix 2>/dev/null)/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
 	source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
-	[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+	[[ -r ~/.config/.p10k.zsh ]] && source ~/.config/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 fi
 
 # options
@@ -85,7 +85,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Setup commands
 source ~/.config/setup.zsh
-if [ -f ~/.local/setup.zsh ]; then
+if [[ -r ~/.local/setup.zsh ]]; then
 	source ~/.local/setup.zsh
 fi
 

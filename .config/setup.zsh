@@ -128,7 +128,7 @@ if command -v xclip >/dev/null 2>&1; then
 fi
 
 # bun
-if [[ -f "$HOME/.bun/bin/bun" ]]; then
+if [[ -r "$HOME/.bun/bin/bun" ]]; then
 	# bun completions
 	[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
@@ -138,12 +138,12 @@ if [[ -f "$HOME/.bun/bin/bun" ]]; then
 fi
 
 # rust
-if [[ -f "$HOME/.cargo/env" ]]; then
-	. "$HOME/.cargo/env"
+if [[ -r "$HOME/.cargo/env" ]]; then
+	source "$HOME/.cargo/env"
 fi
 
 # tailscale needs special handling on mac
-if [[ -f /Applications/Tailscale.app/Contents/MacOS/Tailscale ]]; then
+if [[ -x /Applications/Tailscale.app/Contents/MacOS/Tailscale ]]; then
 	alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 fi
 
@@ -228,7 +228,7 @@ if command -v terraform >/dev/null 2>&1; then
 fi
 
 # fzf-tab
-if [[ -f "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
+if [[ -r "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
 	# set descriptions format to enable group support
 	# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
 	zstyle ':completion:*:descriptions' format '[%d]'
@@ -255,18 +255,18 @@ if [[ -d $HOMEBREW_PREFIX/share/zsh-completions ]]; then
 fi
 
 # zsh-system-clipboard
-if [[ -f $HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
+if [[ -r $HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
 	source "$HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh"
 fi
 
 # zsh-auto-suggestions
-if [[ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-	source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
 	unset ZSH_AUTOSUGGEST_USE_ASYNC # To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
+	source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # zsh-history-substring-search
-if [[ -f "$HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]]; then
+if [[ -r "$HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]]; then
 	export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='none'
 	export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='none'
 	source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -275,6 +275,6 @@ if [[ -f "$HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substr
 fi
 
 # zsh-patina
-if [[ -f "$HOMEBREW_PREFIX/bin/zsh-patina" ]]; then
+if [[ -r "$HOMEBREW_PREFIX/bin/zsh-patina" ]]; then
 	eval "$($HOMEBREW_PREFIX/bin/zsh-patina activate)"
 fi
