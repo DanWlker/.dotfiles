@@ -192,6 +192,11 @@ if command -v asdf >/dev/null 2>&1; then
 	fi
 fi
 
+# jaq (drop in replacement for jq)
+if command -v jaq >/dev/null 2>&1; then
+	alias jq="jaq"
+fi
+
 # mani
 if command -v mani >/dev/null 2>&1; then
 	# Define where to store mani completions
