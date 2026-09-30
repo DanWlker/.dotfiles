@@ -22,9 +22,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("uwsm-app -s b -- hyprpaper")
 	hl.exec_cmd("uwsm-app -s b -- waybar")
 	hl.exec_cmd("uwsm-app -s b -- hypridle")
-	hl.exec_cmd("uwsm-app -s b -- hyprlauncher -d")
+	hl.exec_cmd("uwsm-app -s b -- mako")
 	-- TODO: check these later
-	-- hl.exec_cmd("uwsm-app -s b -- mako")
 	-- hl.exec_cmd("uwsm-app -s b -- fcitx5 -d")
 end)
 
@@ -181,7 +180,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- Programs
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("uwsm-app -- kitty"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("uwsm-app -- helium"))
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("uwsm-app -- hyprlauncher"))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("uwsm-app -- fuzzel"))
 
 -- Notifications
 hl.bind(mainMod .. " + COMMA", hl.dsp.exec_cmd("makoctl dismiss"))
