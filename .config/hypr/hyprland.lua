@@ -15,17 +15,17 @@ hl.monitor({
 ---- AUTOSTART ----
 -------------------
 
--- TODO: check uwsm -v, should change to uwsm-app after versions later than the commit date is upgraded
--- https://github.com/Vladimir-csp/uwsm/issues/107#issuecomment-2746316911
+-- uwsm-app is safe for parallel autostart as of uwsm 0.27 (fixed in a404d04)
+-- https://github.com/Vladimir-csp/uwsm/issues/107
+-- "-s b" puts long-running services in the background slice
 hl.on("hyprland.start", function()
-	hl.exec_cmd("uwsm app -- hyprpaper")
-	hl.exec_cmd("uwsm app -- waybar")
-	hl.exec_cmd("uwsm app -- hypridle")
+	hl.exec_cmd("uwsm-app -s b -- hyprpaper")
+	hl.exec_cmd("uwsm-app -s b -- waybar")
+	hl.exec_cmd("uwsm-app -s b -- hypridle")
+	hl.exec_cmd("uwsm-app -s b -- hyprlauncher -d")
 	-- TODO: check these later
-	-- hl.exec_cmd("uwsm app -- elephant")
-	-- hl.exec_cmd("uwsm app -- walker --gapplication-service")
-	-- hl.exec_cmd("uwsm app -- mako")
-	-- hl.exec_cmd("uwsm app -- fcitx5 -d")
+	-- hl.exec_cmd("uwsm-app -s b -- mako")
+	-- hl.exec_cmd("uwsm-app -s b -- fcitx5 -d")
 end)
 
 -------------------------------
@@ -179,10 +179,9 @@ hl.config({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Programs
-hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("uwsm app -- kitty"))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("uwsm app -- helium"))
--- hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("uwsm app -- walker"))
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("uwsm app -- nc -U /run/user/1000/walker/walker.sock"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("uwsm-app -- kitty"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("uwsm-app -- helium"))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("uwsm-app -- hyprlauncher"))
 
 -- Notifications
 hl.bind(mainMod .. " + COMMA", hl.dsp.exec_cmd("makoctl dismiss"))
@@ -197,8 +196,8 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- uwsm stop rather than hl.dsp.exit(), so systemd brings the session units down in order
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("uwsm stop"))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("uwsm app -- hyprlock"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("uwsm app -- hyprshot -m region --freeze --clipboard"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("uwsm-app -- hyprshot -m region --freeze --clipboard"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.focus({ workspace = "e-1" }))
