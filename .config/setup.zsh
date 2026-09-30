@@ -127,16 +127,6 @@ if command -v xclip >/dev/null 2>&1; then
 	alias xclip="xclip -se c"
 fi
 
-# bun
-if [[ -r "$HOME/.bun/bin/bun" ]]; then
-	# bun completions
-	[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-	# bun
-	export BUN_INSTALL="$HOME/.bun"
-	export PATH="$BUN_INSTALL/bin:$PATH"
-fi
-
 # rust
 if [[ -r "$HOME/.cargo/env" ]]; then
 	source "$HOME/.cargo/env"

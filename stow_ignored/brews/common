@@ -12,6 +12,7 @@ eza
 fblog
 fd
 fzf
+fzf-tab
 git-delta
 hyperfine
 imagemagick
@@ -20,6 +21,7 @@ jaq
 just
 k6
 kubecolor
+kubectl
 lazygit
 neovim
 ocrmypdf
@@ -48,6 +50,8 @@ yazi
 yq
 yt-dlp
 zoxide
+zsh-completions
 zsh-autosuggestions
+zsh-history-substring-search
 zsh-patina
 zsh-system-clipboard
