@@ -83,11 +83,14 @@ mkcd() {
 # Local dependencies
 export PATH="$HOME/.local/bin:$PATH"
 
+autoload -Uz compinit
+compinit
+
 # Setup commands
 source ~/.config/setup.zsh
 if [[ -r ~/.local/setup.zsh ]]; then
 	source ~/.local/setup.zsh
 fi
 
-# run compinit only after all completion definitions are set up
-autoload -Uz compinit && compinit
+# idk if this is needed but whatever
+compinit

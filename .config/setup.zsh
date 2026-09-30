@@ -22,7 +22,7 @@ if command -v fzf >/dev/null 2>&1; then
 		}
 	fi
 	if command -v rg >/dev/null 2>&1; then
-		fgrep() {
+		sgrep() {
 			if [ ! "$" -gt 0 ]; then
 				echo "Need a string to search for!"
 				return 1
@@ -30,7 +30,7 @@ if command -v fzf >/dev/null 2>&1; then
 			rg --smart-case --hidden --files-with-matches --no-messages -g "!node_modules" -g "!.git" "$1" | fzf --multi $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
 		}
 	else
-		fgrep() {
+		sgrep() {
 			if [ ! "$" -gt 0 ]; then
 				echo "Need a string to search for!"
 				return 1
