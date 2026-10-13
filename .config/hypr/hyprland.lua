@@ -19,10 +19,16 @@ hl.monitor({
 -- https://github.com/Vladimir-csp/uwsm/issues/107
 -- "-s b" puts long-running services in the background slice
 hl.on("hyprland.start", function()
+	-- Hand the session env to ksecretd so the PAM-unlocked wallet registers on D-Bus.
+	-- Its XDG autostart entry has X-systemd-skip=true (Plasma runs it itself), so uwsm skips it.
+	hl.exec_cmd("/usr/libexec/pam_kwallet_init")
+	-- Polkit agent; started here rather than enabled so it doesn't clash with Plasma's agent
+	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
+	-- Audio is stopped on logout (see SUPER+SHIFT+Q); bring it back fresh
+	hl.exec_cmd("systemctl --user start pipewire pipewire-pulse wireplumber")
 	hl.exec_cmd("uwsm-app -s b -- hyprpaper")
 	hl.exec_cmd("uwsm-app -s b -- waybar")
 	hl.exec_cmd("uwsm-app -s b -- hypridle")
-	hl.exec_cmd("uwsm-app -s b -- mako")
 	-- TODO: check these later
 	-- hl.exec_cmd("uwsm-app -s b -- fcitx5 -d")
 end)
@@ -143,6 +149,11 @@ hl.config({
 	misc = {
 		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
+
+		-- Wake screens on input after DPMS off (defaults are false, which leaves screens dark
+		-- if anything other than hypridle's on-resume turned them off)
+		mouse_move_enables_dpms = true,
+		key_press_enables_dpms = true,
 	},
 })
 
@@ -193,8 +204,12 @@ hl.bind(mainMod .. " + SHIFT + ALT + COMMA", hl.dsp.exec_cmd("makoctl restore"))
 hl.bind(mainMod .. " + A", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
--- uwsm stop rather than hl.dsp.exit(), so systemd brings the session units down in order
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("uwsm stop"))
+-- uwsm stop rather than hl.dsp.exit(), so systemd brings the session units down in order.
+-- Stop audio first: WirePlumber 0.5.17 crashes or hangs when every session client disconnects at once.
+hl.bind(
+	mainMod .. " + SHIFT + Q",
+	hl.dsp.exec_cmd("systemctl --user stop wireplumber pipewire-pulse pipewire; uwsm stop")
+)
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("uwsm-app -- hyprshot -m region --freeze --clipboard"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
