@@ -258,28 +258,18 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ locked = true, repeating = true }
-)
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { locked = true, repeating = true })
+-- swayosd-client changes the value and shows the OSD (swayosd-server runs from autostart)
+local osdKeys = {
+	{ "XF86AudioRaiseVolume", "--output-volume +5", true },
+	{ "XF86AudioLowerVolume", "--output-volume -5", true },
+	{ "XF86AudioMute", "--output-volume mute-toggle", false },
+	{ "XF86AudioMicMute", "--input-volume mute-toggle", false },
+	{ "XF86MonBrightnessUp", "--brightness +10", true },
+	{ "XF86MonBrightnessDown", "--brightness -10", true },
+}
+for _, k in ipairs(osdKeys) do
+	hl.bind(k[1], hl.dsp.exec_cmd("swayosd-client " .. k[2]), { locked = true, repeating = k[3] })
+end
 
 -- Requires playerctl
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })

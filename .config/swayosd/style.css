@@ -1,0 +1,50 @@
+/* Catppuccin Mocha, lavender accent to match Hyprland borders / fuzzel */
+@define-color base #1e1e2e;
+@define-color surface1 #45475a;
+@define-color overlay0 #6c7086;
+@define-color text #cdd6f4;
+@define-color lavender #b4befe;
+
+window#osd {
+  border-radius: 12px;
+  border: 3px solid @lavender;
+  background: alpha(@base, 0.92);
+}
+window#osd #container {
+  margin: 16px;
+}
+window#osd image,
+window#osd label {
+  color: @text;
+}
+window#osd progressbar:disabled,
+window#osd image:disabled {
+  opacity: 0.5;
+}
+window#osd progressbar,
+window#osd segmentedprogress {
+  min-height: 6px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+}
+window#osd trough,
+window#osd segment {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: @surface1;
+}
+window#osd progress,
+window#osd segment.active {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: @lavender;
+}
+window#osd segment {
+  margin-left: 8px;
+}
+window#osd segment:first-child {
+  margin-left: 0;
+}
