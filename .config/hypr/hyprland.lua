@@ -33,6 +33,10 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("uwsm-app -s b -- hypridle")
 	-- Volume/brightness OSD (keybinds call swayosd-client)
 	hl.exec_cmd("uwsm-app -s b -- swayosd-server")
+	-- GTK apps (e.g. waybar, file dialogs) draw their own cursor from this GNOME setting, not from
+	-- XCURSOR_THEME. Plasma may reset it, so set it on every Hyprland login.
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme posys_cursor_scalable_black")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 24")
 	-- TODO: check these later
 	-- hl.exec_cmd("uwsm-app -s b -- fcitx5 -d")
 end)
