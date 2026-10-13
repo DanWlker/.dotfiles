@@ -24,6 +24,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/libexec/pam_kwallet_init")
 	-- Polkit agent; started here rather than enabled so it doesn't clash with Plasma's agent
 	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
+	-- Notifications; guarded to Hyprland by mako.service.d/hyprland-only.conf so it can't race plasmashell
+	hl.exec_cmd("systemctl --user start mako.service")
 	-- Audio is stopped on logout (see SUPER+SHIFT+Q); bring it back fresh
 	hl.exec_cmd("systemctl --user start pipewire pipewire-pulse wireplumber")
 	hl.exec_cmd("uwsm-app -s b -- hyprpaper")

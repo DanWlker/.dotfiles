@@ -47,8 +47,10 @@ git submodule update --init --remote --recursive
 1. Once everything is installed correctly run
 
    ```
-   cd .dotfiles && stow .
+   mkdir -p ~/.config/systemd/user/mako.service.d && cd .dotfiles && stow .
    ```
+
+   The `mkdir` stops stow from symlinking the whole `mako.service.d` folder, which systemd ignores.
 
 1. Start your shell as zsh, tmux should launch
 
