@@ -38,7 +38,7 @@
         "tooltip": false,
     },
     "backlight": {
-        "device": "intel_backlight",
+        "device": "apple-panel-bl",
         "format": "{icon} {percent}%",
         "format-icons": [
             "",
