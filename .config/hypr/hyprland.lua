@@ -175,7 +175,10 @@ hl.config({
 
 		follow_mouse = 1,
 
-		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+		-- Mice: slower, no acceleration (same distance per hand movement at any speed).
+		-- The trackpad is set back to defaults below, so this applies to every other pointer.
+		sensitivity = -0.5, -- -1.0 - 1.0, 0 means no modification.
+		accel_profile = "flat",
 
 		touchpad = {
 			natural_scroll = false,
@@ -184,6 +187,13 @@ hl.config({
 		-- Change speed of keyboard repeat
 		repeat_delay = 350,
 	},
+})
+
+-- MacBook trackpad: keep libinput's defaults instead of the mouse settings above
+hl.device({
+	name = "apple-spi-trackpad",
+	sensitivity = 0,
+	accel_profile = "adaptive",
 })
 
 ---------------------
