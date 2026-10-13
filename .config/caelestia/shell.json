@@ -6,6 +6,15 @@
             }
         }
     },
+    "bar": {
+        "activeWindow": {
+            "inverted": true
+        },
+        "clock": {
+            "showDate": true,
+            "showIcon": true
+        }
+    },
     "general": {
         "apps": {
             "explorer": [
