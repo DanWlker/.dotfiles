@@ -1,2 +1,4 @@
 .config/tmux/plugins
 .DS_Store
+# fcitx5 regenerates this keyboard-layout cache itself
+.config/fcitx5/conf/cached_layouts
