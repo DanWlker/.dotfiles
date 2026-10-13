@@ -31,6 +31,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("uwsm-app -s b -- hyprpaper")
 	hl.exec_cmd("uwsm-app -s b -- waybar")
 	hl.exec_cmd("uwsm-app -s b -- hypridle")
+	-- Volume/brightness OSD (keybinds call swayosd-client)
+	hl.exec_cmd("uwsm-app -s b -- swayosd-server")
 	-- TODO: check these later
 	-- hl.exec_cmd("uwsm-app -s b -- fcitx5 -d")
 end)
