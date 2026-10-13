@@ -41,8 +41,8 @@ end)
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
 
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+-- Set in ~/.config/uwsm/env (toolkit/cursor vars) and ~/.config/uwsm/env-hyprland (HYPR*/AQ_* vars),
+-- as recommended on the Hyprland wiki's uwsm page.
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -214,7 +214,8 @@ hl.bind(
 	mainMod .. " + SHIFT + Q",
 	hl.dsp.exec_cmd("systemctl --user stop wireplumber pipewire-pulse pipewire; uwsm stop")
 )
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("uwsm-app -- hyprlock"))
+-- Lock through logind so hypridle's lock_cmd (pidof hyprlock || hyprlock) is the only way hyprlock starts
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("uwsm-app -- hyprshot -m region --freeze --clipboard"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "e+1" }))

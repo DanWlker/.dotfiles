@@ -95,9 +95,10 @@
         "tooltip": false,
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}%",
-        "scroll-step": 5,
+        // Scroll and click go through swayosd so they show the OSD, like the media keys
+        "on-scroll-up": "swayosd-client --output-volume +5",
+        "on-scroll-down": "swayosd-client --output-volume -5",
         "format-muted": " ",
         "format-icons": {
             "default": [
@@ -107,7 +108,7 @@
             ],
         },
         "tooltip": false,
-        "on-click": "amixer set Master toggle",
+        "on-click": "swayosd-client --output-volume mute-toggle",
     },
     "bluetooth": {
         "on-click": "systemsettings kcm_bluetooth",
@@ -139,7 +140,7 @@
         "spacing": 1,
     },
     "custom/lock": {
-        "on-click": "hyprlock",
+        "on-click": "loginctl lock-session",
         "format": "",
         "tooltip": false,
     },
