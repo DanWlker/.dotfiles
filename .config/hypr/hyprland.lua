@@ -24,16 +24,12 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/libexec/pam_kwallet_init")
 	-- Polkit agent; started here rather than enabled so it doesn't clash with Plasma's agent
 	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
-	-- Notifications; guarded to Hyprland by mako.service.d/hyprland-only.conf so it can't race plasmashell
-	hl.exec_cmd("systemctl --user start mako.service")
-	-- Audio is stopped on logout (see SUPER+SHIFT+Q); bring it back fresh
-	hl.exec_cmd("systemctl --user start pipewire pipewire-pulse wireplumber")
-	hl.exec_cmd("uwsm-app -s b -- hyprpaper")
-	hl.exec_cmd("uwsm-app -s b -- waybar")
-	hl.exec_cmd("uwsm-app -s b -- hypridle")
-	-- Volume/brightness OSD (keybinds call swayosd-client)
-	hl.exec_cmd("uwsm-app -s b -- swayosd-server")
-	-- GTK apps (e.g. waybar, file dialogs) draw their own cursor from this GNOME setting, not from
+	-- Caelestia shell (fork in ~/.config/quickshell/caelestia): bar, launcher, notifications, OSD, lock,
+	-- idle, wallpaper and session menu. Replaces waybar, fuzzel, mako, swayosd, hyprlock, hypridle and
+	-- hyprpaper, whose configs stay in the dotfiles as the fallback.
+	-- Needs QML_IMPORT_PATH and CAELESTIA_LIB_DIR from ~/.config/uwsm/env.
+	hl.exec_cmd("uwsm-app -s b -- qs -c caelestia -n -d")
+	-- GTK apps (e.g. file dialogs) draw their own cursor from this GNOME setting, not from
 	-- XCURSOR_THEME. Plasma may reset it, so set it on every Hyprland login.
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme posys_cursor_scalable_black")
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 24")
@@ -148,7 +144,7 @@ hl.config({
 		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
 
 		-- Wake screens on input after DPMS off (defaults are false, which leaves screens dark
-		-- if anything other than hypridle's on-resume turned them off)
+		-- if anything other than the idle return action turned them off)
 		mouse_move_enables_dpms = true,
 		key_press_enables_dpms = true,
 
@@ -218,14 +214,12 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- Programs
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("uwsm-app -- kitty"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("uwsm-app -- helium"))
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("uwsm-app -- fuzzel"))
+-- Caelestia's launcher (its global shortcuts are "caelestia:<name>", see CustomShortcut in the shell)
+hl.bind(mainMod .. " + Return", hl.dsp.global("caelestia:launcher"))
 
--- Notifications
-hl.bind(mainMod .. " + COMMA", hl.dsp.exec_cmd("makoctl dismiss"))
-hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd("makoctl dismiss --all"))
--- hl.bind(mainMod .. " + CTRL + COMMA", hl.dsp.exec_cmd("makoctl mode -t do-not-disturb && makoctl mode | grep -q 'do-not-disturb' && notify-send \"Silenced notifications\" || notify-send \"Enabled notifications\""))
-hl.bind(mainMod .. " + ALT + COMMA", hl.dsp.exec_cmd("makoctl invoke"))
-hl.bind(mainMod .. " + SHIFT + ALT + COMMA", hl.dsp.exec_cmd("makoctl restore"))
+-- Notifications: sidebar with the notification centre, and clear all
+hl.bind(mainMod .. " + COMMA", hl.dsp.global("caelestia:sidebar"))
+hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.global("caelestia:clearNotifs"), { locked = true })
 
 -- Windows
 hl.bind(mainMod .. " + A", hl.dsp.window.fullscreen())
@@ -233,13 +227,12 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 -- Pin: keep a floating window on top and visible on every workspace (float it with SUPER+F first)
 hl.bind(mainMod .. " + P", hl.dsp.window.pin())
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
--- Power menu (Lock / Log out / Reboot / Shut down), same as the waybar power button.
--- Its "Log out" stops audio first (WirePlumber crashes when every client disconnects at once),
--- then runs uwsm stop rather than hl.dsp.exit(), so systemd brings the session down in order.
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("~/.config/waybar/scripts/powermenu.sh"))
--- Lock through logind so hypridle's lock_cmd (pidof hyprlock || hyprlock) is the only way hyprlock starts
+-- Caelestia's session menu (lock / log out / reboot / shut down)
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.global("caelestia:session"))
+-- Lock through logind; Caelestia's lock screen listens for it (as does anything else that should lock)
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("uwsm-app -- hyprshot -m region --freeze --clipboard"))
+-- Caelestia's region picker on a frozen screen, copied to the clipboard (like hyprshot --freeze --clipboard)
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.focus({ workspace = "e-1" }))
@@ -283,18 +276,20 @@ end
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Laptop multimedia keys for volume and LCD brightness
--- swayosd-client changes the value and shows the OSD (swayosd-server runs from autostart)
-local osdKeys = {
-	{ "XF86AudioRaiseVolume", "--output-volume +5", true },
-	{ "XF86AudioLowerVolume", "--output-volume -5", true },
-	{ "XF86AudioMute", "--output-volume mute-toggle", false },
-	{ "XF86AudioMicMute", "--input-volume mute-toggle", false },
-	{ "XF86MonBrightnessUp", "--brightness +10", true },
-	{ "XF86MonBrightnessDown", "--brightness -10", true },
+-- Laptop multimedia keys for volume and LCD brightness; Caelestia's OSD shows the change.
+-- Volume through wpctl (the shell follows PipeWire), capped at 100% like before; raising unmutes.
+local mediaKeys = {
+	{ "XF86AudioRaiseVolume", "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+", true },
+	{ "XF86AudioLowerVolume", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", true },
+	{ "XF86AudioMute", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", false },
+	{ "XF86AudioMicMute", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", false },
+	-- Brightness through the shell, which only tracks changes it makes itself. Always the laptop panel:
+	-- Asahi has no DDC for the Dell, so the shell's own "brightnessUp" (focused monitor) would do nothing there.
+	{ "XF86MonBrightnessUp", "qs -c caelestia ipc call brightness setFor eDP-1 +10%", true },
+	{ "XF86MonBrightnessDown", "qs -c caelestia ipc call brightness setFor eDP-1 10%-", true },
 }
-for _, k in ipairs(osdKeys) do
-	hl.bind(k[1], hl.dsp.exec_cmd("swayosd-client " .. k[2]), { locked = true, repeating = k[3] })
+for _, k in ipairs(mediaKeys) do
+	hl.bind(k[1], hl.dsp.exec_cmd(k[2]), { locked = true, repeating = k[3] })
 end
 
 -- Requires playerctl
@@ -347,6 +342,11 @@ hl.window_rule({
 	no_blur = true,
 	max_size = { 1, 1 },
 })
+
+-- Caelestia's layers (from its dots' rules.lua): no animation for the screen border and screenshot
+-- picker, fade for the panels and wallpaper
+hl.layer_rule({ match = { namespace = "caelestia-(border-exclusion|area-picker)" }, no_anim = true })
+hl.layer_rule({ match = { namespace = "caelestia-(drawers|background)" }, animation = "fade" })
 
 -- fix hyprshot screenshot artifact showing up
 hl.layer_rule({
