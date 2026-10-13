@@ -66,11 +66,6 @@ hl.config({
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
 		resize_on_border = true,
-
-		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-		allow_tearing = false,
-
-		layout = "dwindle",
 	},
 
 	decoration = {
@@ -82,19 +77,12 @@ hl.config({
 		inactive_opacity = 0.92,
 
 		shadow = {
-			enabled = true,
-			range = 4,
-			render_power = 3,
 			color = mocha.mantle,
 		},
 
 		blur = {
 			enabled = false,
 		},
-	},
-
-	animations = {
-		enabled = true,
 	},
 })
 
@@ -108,7 +96,7 @@ hl.config({
 -- hl.animation({ leaf = "fade",        enabled = true, speed = 7,  bezier = "default" })
 -- hl.animation({ leaf = "workspaces",  enabled = true, speed = 6,  bezier = "default" })
 
--- LimeFrenzy
+-- LimeFrenzy (speed = duration in tenths of a second)
 hl.curve("default", { type = "bezier", points = { { 0.12, 0.92 }, { 0.08, 1.0 } } })
 hl.curve("wind", { type = "bezier", points = { { 0.12, 0.92 }, { 0.08, 1.0 } } })
 hl.curve("overshot", { type = "bezier", points = { { 0.18, 0.95 }, { 0.22, 1.03 } } })
@@ -117,7 +105,8 @@ hl.curve("liner", { type = "bezier", points = { { 1, 1 }, { 1, 1 } } })
 hl.animation({ leaf = "windows", enabled = true, speed = 5, bezier = "wind", style = "popin 60%" })
 hl.animation({ leaf = "windowsIn", enabled = true, speed = 6, bezier = "overshot", style = "popin 60%" })
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 4, bezier = "overshot", style = "popin 60%" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 4, bezier = "overshot", style = "slide" })
+-- windowsMove slowed from 4 to 6 (0.6s)
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 6, bezier = "overshot", style = "slide" })
 -- disabled because it interferes with hyprshot
 -- hl.animation({ leaf = "layers",    enabled = true, speed = 4, bezier = "default",  style = "popin" })
 hl.animation({ leaf = "fadeIn", enabled = true, speed = 7, bezier = "default" })
@@ -162,6 +151,9 @@ hl.config({
 		-- if anything other than hypridle's on-resume turned them off)
 		mouse_move_enables_dpms = true,
 		key_press_enables_dpms = true,
+
+		-- Focus windows that ask for it (e.g. a link opened from another app switches to the browser)
+		focus_on_activate = true,
 	},
 })
 
@@ -177,20 +169,16 @@ hl.config({
 		-- kb_options = "",
 		-- kb_rules   = "",
 
-		follow_mouse = 1,
-
 		-- Mice: slower, no acceleration (same distance per hand movement at any speed).
 		-- The trackpad is set back to defaults below, so this applies to every other pointer.
 		sensitivity = -0.5, -- -1.0 - 1.0, 0 means no modification.
 		accel_profile = "flat",
 
-		-- MacBook trackpad, set up to behave like macOS's defaults
+		-- MacBook trackpad, macOS-like (tap to click and palm rejection are Hyprland defaults, so not set here)
 		touchpad = {
 			natural_scroll = true, -- content follows your fingers
 			scroll_factor = 0.1, -- scroll distance multiplier (default 1.0); lower = slower
 			clickfinger_behavior = true, -- 2-finger click = right click, 3-finger = middle (not by click position)
-			tap_to_click = false, -- macOS default: press to click
-			disable_while_typing = true, -- palm rejection
 		},
 
 		-- Change speed of keyboard repeat
@@ -198,11 +186,20 @@ hl.config({
 	},
 })
 
--- 3-finger horizontal swipe switches workspaces, like swiping between Spaces on macOS
+-- 3-finger vertical swipe switches workspaces, like swiping between Spaces on macOS
 hl.gesture({
 	fingers = 3,
 	direction = "vertical",
 	action = "workspace",
+})
+
+-- Swipe feel (values from Caelestia's gestures.lua; its direction lock = on / 10px is Hyprland's default)
+hl.config({
+	gestures = {
+		workspace_swipe_distance = 700, -- px of finger travel for a full workspace switch
+		workspace_swipe_cancel_ratio = 0.15, -- let go before 15% of the way and it snaps back
+		workspace_swipe_min_speed_to_force = 5, -- a quick flick switches even if short
+	},
 })
 
 -- MacBook trackpad: keep libinput's defaults instead of the mouse settings above
@@ -233,6 +230,8 @@ hl.bind(mainMod .. " + SHIFT + ALT + COMMA", hl.dsp.exec_cmd("makoctl restore"))
 -- Windows
 hl.bind(mainMod .. " + A", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+-- Pin: keep a floating window on top and visible on every workspace (float it with SUPER+F first)
+hl.bind(mainMod .. " + P", hl.dsp.window.pin())
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- Power menu (Lock / Log out / Reboot / Shut down), same as the waybar power button.
 -- Its "Log out" stops audio first (WirePlumber crashes when every client disconnects at once),
@@ -307,6 +306,13 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
+
+-- Centre floating windows when they open (not XWayland ones: their popups/menus count as windows)
+hl.window_rule({
+	name = "center-floating",
+	match = { float = true, xwayland = false },
+	center = true,
+})
 
 -- Ignore maximize requests from apps. You'll probably like this.
 hl.window_rule({
