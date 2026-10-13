@@ -1,21 +1,33 @@
 {
-    "general": {
-        "apps": {
-            "terminal": ["kitty"],
-            "explorer": ["dolphin", "--select"],
-            "playback": ["dragon"]
-        }
-    },
-    "paths": {
-        "wallpaperDir": "~/.config/hypr/wallpaper",
-        "mediaGif": "",
-        "sessionGif": ""
-    },
     "appearance": {
         "font": {
             "mono": {
                 "family": "Maple Mono NF"
             }
         }
+    },
+    "general": {
+        "apps": {
+            "explorer": [
+                "dolphin",
+                "--select"
+            ],
+            "playback": [
+                "dragon"
+            ],
+            "terminal": [
+                "kitty"
+            ]
+        }
+    },
+    "paths": {
+        "mediaGif": "",
+        "sessionGif": "",
+        "wallpaperDir": "~/.config/hypr/wallpaper"
+    },
+    "services": {
+        "clockFormat": "TwelveHour",
+        "dataUnits": "Decimal",
+        "weatherUnits": "Celsius"
     }
 }
