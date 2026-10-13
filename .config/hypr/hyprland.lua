@@ -25,8 +25,7 @@ hl.on("hyprland.start", function()
 	-- Polkit agent; started here rather than enabled so it doesn't clash with Plasma's agent
 	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
 	-- Caelestia shell (fork in ~/.config/quickshell/caelestia): bar, launcher, notifications, OSD, lock,
-	-- idle, wallpaper and session menu. Replaces waybar, fuzzel, mako, swayosd, hyprlock, hypridle and
-	-- hyprpaper, whose configs stay in the dotfiles as the fallback.
+	-- idle, wallpaper and session menu.
 	-- Needs QML_IMPORT_PATH and CAELESTIA_LIB_DIR from ~/.config/uwsm/env.
 	hl.exec_cmd("uwsm-app -s b -- qs -c caelestia -n -d")
 	-- GTK apps (e.g. file dialogs) draw their own cursor from this GNOME setting, not from
@@ -50,8 +49,8 @@ end)
 
 hl.config({
 	general = {
-		gaps_in = 4,
-		gaps_out = { top = 2, left = 8, right = 8, bottom = 8 },
+		gaps_in = 5,
+		gaps_out = { top = 10, left = 10, right = 10, bottom = 10 },
 
 		border_size = 3,
 
@@ -103,7 +102,7 @@ hl.animation({ leaf = "windowsIn", enabled = true, speed = 6, bezier = "overshot
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 4, bezier = "overshot", style = "popin 60%" })
 -- windowsMove slowed from 4 to 6 (0.6s)
 hl.animation({ leaf = "windowsMove", enabled = true, speed = 6, bezier = "overshot", style = "slide" })
--- disabled because it interferes with hyprshot
+-- disabled because it pops in slurp's selection overlay (region screenshots/recording)
 -- hl.animation({ leaf = "layers",    enabled = true, speed = 4, bezier = "default",  style = "popin" })
 hl.animation({ leaf = "fadeIn", enabled = true, speed = 7, bezier = "default" })
 hl.animation({ leaf = "fadeOut", enabled = true, speed = 7, bezier = "default" })
@@ -231,7 +230,7 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.global("caelestia:session"))
 -- Lock through logind; Caelestia's lock screen listens for it (as does anything else that should lock)
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
--- Caelestia's region picker on a frozen screen, copied to the clipboard (like hyprshot --freeze --clipboard)
+-- Caelestia's region picker on a frozen screen, copied to the clipboard
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "e+1" }))
@@ -279,7 +278,11 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- Laptop multimedia keys for volume and LCD brightness; Caelestia's OSD shows the change.
 -- Volume through wpctl (the shell follows PipeWire), capped at 100% like before; raising unmutes.
 local mediaKeys = {
-	{ "XF86AudioRaiseVolume", "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+", true },
+	{
+		"XF86AudioRaiseVolume",
+		"wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
+		true,
+	},
 	{ "XF86AudioLowerVolume", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", true },
 	{ "XF86AudioMute", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", false },
 	{ "XF86AudioMicMute", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", false },
@@ -348,7 +351,7 @@ hl.window_rule({
 hl.layer_rule({ match = { namespace = "caelestia-(border-exclusion|area-picker)" }, no_anim = true })
 hl.layer_rule({ match = { namespace = "caelestia-(drawers|background)" }, animation = "fade" })
 
--- fix hyprshot screenshot artifact showing up
+-- slurp's selection overlay (record.sh region mode): fade instead of leaving an artifact
 hl.layer_rule({
 	name = "fade-selection",
 	match = { namespace = "selection" },

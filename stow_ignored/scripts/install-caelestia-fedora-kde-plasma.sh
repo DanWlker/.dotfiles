@@ -16,8 +16,9 @@ PACKAGES=(
 	lm_sensors-devel
 	# Runtime (quickshell from the COPR; Fedora's own is too old)
 	quickshell qt6-qtimageformats ddcutil brightnessctl NetworkManager lm_sensors libxml2
-	# Screenshot editor and screen recorder (wf-recorder instead of gpu-screen-recorder on Asahi)
-	swappy wf-recorder
+	# Screenshot editor and screen recorder (wf-recorder instead of gpu-screen-recorder on Asahi);
+	# wl-clipboard copies screenshots, slurp picks recording regions (also pulled in by the portal)
+	swappy wf-recorder wl-clipboard slurp
 	# Clock/workspace font
 	google-rubik-fonts
 )

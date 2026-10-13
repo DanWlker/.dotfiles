@@ -1,9 +1,0 @@
-# https://github.com/ErikReider/SwayOSD — defaults in /etc/xdg/swayosd/config.toml
-[server]
-# Cap volume at 100% (swayosd's default is 150)
-max_volume = 100
-min_brightness = 5
-show_percentage = true
-duration = 1200
-
-[client]

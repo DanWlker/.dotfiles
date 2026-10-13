@@ -1,6 +1,5 @@
 -- Catppuccin Mocha palette for the Lua config.
--- mocha.conf is kept as-is because hyprlock/hypridle/hyprpaper still use hyprlang.
--- Keep the two in sync when you change a color.
+-- hyprtoolkit.conf repeats some of these colours (hyprlang); keep it in sync when you change one.
 
 local hex = {
     rosewater = "f5e0dc",
