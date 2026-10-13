@@ -18,6 +18,19 @@
             "terminal": [
                 "kitty"
             ]
+        },
+        "idle": {
+            "timeouts": [
+                {
+                    "idleAction": "lock",
+                    "timeout": 180
+                },
+                {
+                    "idleAction": "dpms off",
+                    "returnAction": "dpms on",
+                    "timeout": 300
+                }
+            ]
         }
     },
     "paths": {
