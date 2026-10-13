@@ -25,9 +25,10 @@
 #workspaces button {
   color: @subtext0;
   border-radius: 999px;
-  padding: 0.4rem 0.3rem;
+  padding: 0.3rem 0.5rem;
   border: 2px solid transparent;
-  transition: padding 150ms ease-in-out;
+  /* Animate every change (size, padding, colours) - from kenso-dots */
+  transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.active,
@@ -36,7 +37,8 @@
   color: @base;
   border-radius: 999px;
   /* Longer pill for the current workspace */
-  padding: 0.4rem 1rem;
+  padding: 0.3rem 1rem;
+  min-width: 35px;
   border: 2px solid @subtext0;
   box-shadow: none;
   text-shadow: none;
@@ -47,6 +49,8 @@
   box-shadow: none;
   text-shadow: none;
   border: 2px solid @subtext0;
+  /* Hovered workspaces grow too */
+  min-width: 35px;
 }
 
 #backlight,
