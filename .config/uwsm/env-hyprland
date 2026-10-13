@@ -1,2 +1,4 @@
 # Loaded by uwsm only for the Hyprland session (HYPR* / AQ_* variables)
+# Cursor drawn by Hyprland (hyprcursor format)
+export HYPRCURSOR_THEME=Posys-Cursor-Scalable-Black
 export HYPRCURSOR_SIZE=24

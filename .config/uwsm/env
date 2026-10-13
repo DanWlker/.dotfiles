@@ -1,5 +1,6 @@
 # Loaded by uwsm for Hyprland sessions only (Plasma isn't started through uwsm)
 # Qt6 apps: theme via hyprqt6engine (config in ~/.config/hypr/hyprqt6engine.conf)
 export QT_QPA_PLATFORMTHEME=hyprqt6engine
-# Cursor size for XCursor-based toolkits
+# Cursor (XCursor-based toolkits): Posy's Cursor Black, see ~/.dotfiles/.local/share/icons/README.md
+export XCURSOR_THEME=posys_cursor_scalable_black
 export XCURSOR_SIZE=24
