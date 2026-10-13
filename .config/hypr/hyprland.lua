@@ -132,6 +132,8 @@ hl.config({
 	-- dwindle.pseudotile is gone in 0.55; use the hl.dsp.window.pseudo() dispatcher instead
 	dwindle = {
 		preserve_split = true, -- You probably want this
+		-- New windows always open to the right (or below), not on whichever side the cursor is
+		force_split = 2, -- 0 = follow mouse (default), 1 = left/top, 2 = right/bottom
 	},
 
 	master = {
