@@ -40,7 +40,25 @@ cmake --build "$M3SHAPES_SRC/build"
 cmake --install "$M3SHAPES_SRC/build"
 rm -rf "$M3SHAPES_SRC"
 
+# The shell itself: fork of caelestia-dots/shell, a submodule at .config/quickshell/caelestia
+# (already there if the dotfiles were cloned with --recurse-submodules)
+SHELL_SRC=$HOME/.dotfiles/.config/quickshell/caelestia
+git -C "$HOME/.dotfiles" submodule update --init .config/quickshell/caelestia
+git -C "$SHELL_SRC" remote get-url upstream >/dev/null 2>&1 ||
+	git -C "$SHELL_SRC" remote add upstream https://github.com/caelestia-dots/shell.git
+
+# Its C++ plugin into ~/.local; the QML runs straight from the repo, so only extras+plugin are built.
+# ~/.config/uwsm/env points the shell here (QML_IMPORT_PATH, CAELESTIA_LIB_DIR). Rerun after pulling
+# C++ changes from upstream (build/ is gitignored).
+cmake -S "$SHELL_SRC" -B "$SHELL_SRC/build" -G Ninja -DCMAKE_BUILD_TYPE=Release \
+	-DENABLE_MODULES="extras;plugin" -DCMAKE_INSTALL_PREFIX="$HOME/.local" -DCMAKE_INSTALL_LIBDIR=lib
+cmake --build "$SHELL_SRC/build"
+cmake --install "$SHELL_SRC/build"
+
+# Link the configs (~/.config/quickshell, ~/.config/caelestia, uwsm env, hyprland.lua)
+cd "$HOME/.dotfiles" && stow .
+
 # Manual steps not covered here:
-# - Build the shell plugin into ~/.local (see the plan doc)
+# - Log out and back in so uwsm loads the new env; hyprland.lua starts the shell (qs -c caelestia)
 # - Not installed on purpose: power-profiles-daemon, fish, libqalculate, aubio, libcava, pipewire-devel
 #   (the fork removed the code that needed them)
