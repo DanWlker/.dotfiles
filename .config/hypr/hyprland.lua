@@ -151,6 +151,11 @@ hl.config({
 
 		-- Focus windows that ask for it (e.g. a link opened from another app switches to the browser)
 		focus_on_activate = true,
+
+		-- Let a new lock client take over if the lock screen dies while locked. The lock is part of the
+		-- Caelestia shell, so a shell crash would otherwise leave the red "lockscreen died" screen
+		-- (recoverable only from a TTY); restarting the shell now brings the lock back.
+		allow_session_lock_restore = true,
 	},
 })
 
@@ -232,6 +237,15 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.global("caelestia:session"))
 -- Lock through logind; Caelestia's lock screen listens for it (as does anything else that should lock)
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
+-- Restore the lock screen after the shell crashed while locked (needs misc.allow_session_lock_restore):
+-- start the shell if it's gone, give it time to come up, then lock through its IPC. Works while locked.
+hl.bind(
+	mainMod .. " + ALT + L",
+	hl.dsp.exec_cmd(
+		"sh -c 'pgrep -x qs >/dev/null || uwsm-app -s b -- qs -c caelestia -n -d; sleep 2; qs -c caelestia ipc call lock lock'"
+	),
+	{ locked = true }
+)
 -- Caelestia's region picker on a frozen screen, copied to the clipboard
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
