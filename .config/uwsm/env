@@ -9,3 +9,9 @@ export XCURSOR_SIZE=24
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 export QT_IM_MODULES="wayland;fcitx"
+# Toolkit backends: prefer native Wayland, fall back to X11 (from Caelestia's uwsm/env)
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export QT_QPA_PLATFORM="wayland;xcb"
+export SDL_VIDEODRIVER=wayland,x11
+# Java AWT/Swing apps (JetBrains IDEs etc.) draw blank grey windows under tiling compositors without this
+export _JAVA_AWT_WM_NONREPARENTING=1
