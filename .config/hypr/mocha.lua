@@ -32,6 +32,8 @@ local hex = {
 }
 
 -- mocha.lavender -> "rgb(b4befe)", mocha.hex.lavender -> "b4befe"
+-- Fields are filled in by the loop below, so declare the shape for the language server
+---@type table<string, any>
 local mocha = { hex = hex }
 for name, value in pairs(hex) do
     mocha[name] = "rgb(" .. value .. ")"
