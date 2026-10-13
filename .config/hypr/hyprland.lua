@@ -37,8 +37,8 @@ hl.on("hyprland.start", function()
 	-- XCURSOR_THEME. Plasma may reset it, so set it on every Hyprland login.
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme posys_cursor_scalable_black")
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 24")
-	-- TODO: check these later
-	-- hl.exec_cmd("uwsm-app -s b -- fcitx5 -d")
+	-- Input method (in Plasma, KWin launches it instead: Virtual Keyboard -> Fcitx 5)
+	hl.exec_cmd("uwsm-app -s b -- fcitx5 -d")
 end)
 
 -------------------------------

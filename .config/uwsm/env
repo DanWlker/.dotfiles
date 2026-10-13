@@ -4,3 +4,8 @@ export QT_QPA_PLATFORMTHEME=hyprqt6engine
 # Cursor (XCursor-based toolkits): Posy's Cursor Black, see ~/.dotfiles/.local/share/icons/README.md
 export XCURSOR_THEME=posys_cursor_scalable_black
 export XCURSOR_SIZE=24
+# Input method: fcitx5. GTK/Qt6 Wayland apps talk to it through text-input-v3, so GTK_IM_MODULE
+# stays unset; Qt prefers its Wayland IM and falls back to the fcitx module; X11 apps use XIM.
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+export QT_IM_MODULES="wayland;fcitx"

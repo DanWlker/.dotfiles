@@ -30,6 +30,8 @@ PACKAGES=(
 	kitty helium-bin hyprshot
 	# Media/brightness keys (wpctl comes from wireplumber)
 	wireplumber brightnessctl playerctl
+	# Input method (Chinese Pinyin); not fcitx5-autostart, Hyprland's autostart / Plasma's KWin launch it
+	fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt fcitx5-qt6 fcitx5-configtool kcm-fcitx5
 )
 eval "$INSTALL_CMD ${PACKAGES[*]}"
 
