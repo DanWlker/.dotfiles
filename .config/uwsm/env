@@ -15,3 +15,7 @@ export QT_QPA_PLATFORM="wayland;xcb"
 export SDL_VIDEODRIVER=wayland,x11
 # Java AWT/Swing apps (JetBrains IDEs etc.) draw blank grey windows under tiling compositors without this
 export _JAVA_AWT_WM_NONREPARENTING=1
+# Caelestia shell (fork in ~/.config/quickshell/caelestia): its C++ plugin and m3shapes are built into
+# ~/.local (see the fork's FORK.md); QML modules there and the shell's helper binaries
+export QML_IMPORT_PATH="$HOME/.local/lib/qt6/qml"
+export CAELESTIA_LIB_DIR="$HOME/.local/lib/caelestia"

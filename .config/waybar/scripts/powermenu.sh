@@ -7,11 +7,7 @@ choice=$(printf '%s\n' "Lock" "Log out" "Reboot" "Shut down" |
 
 case "$choice" in
 *Lock) loginctl lock-session ;;
-# Stop audio first (WirePlumber crashes on logout), then end the session via uwsm
-*"Log out")
-	systemctl --user stop wireplumber pipewire-pulse pipewire
-	uwsm stop
-	;;
+*"Log out") uwsm stop ;;
 *Reboot) systemctl reboot ;;
 *"Shut down") systemctl poweroff ;;
 esac

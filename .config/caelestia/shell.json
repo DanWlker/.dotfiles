@@ -1,0 +1,19 @@
+{
+    "general": {
+        "apps": {
+            "terminal": ["kitty"],
+            "explorer": ["dolphin", "--select"],
+            "playback": ["dragon"]
+        }
+    },
+    "paths": {
+        "wallpaperDir": "~/.config/hypr/wallpaper"
+    },
+    "appearance": {
+        "font": {
+            "mono": {
+                "family": "Maple Mono NF"
+            }
+        }
+    }
+}
