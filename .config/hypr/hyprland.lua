@@ -236,7 +236,7 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- Power menu (Lock / Log out / Reboot / Shut down), same as the waybar power button.
 -- Its "Log out" stops audio first (WirePlumber crashes when every client disconnects at once),
 -- then runs uwsm stop rather than hl.dsp.exit(), so systemd brings the session down in order.
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("~/.config/waybar/scripts/powermenu.bash"))
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("~/.config/waybar/scripts/powermenu.sh"))
 -- Lock through logind so hypridle's lock_cmd (pidof hyprlock || hyprlock) is the only way hyprlock starts
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("uwsm-app -- hyprshot -m region --freeze --clipboard"))
