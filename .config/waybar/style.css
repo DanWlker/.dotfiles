@@ -75,6 +75,22 @@
   color: @blue;
 }
 
+/* System tray: its own pill after the clocks */
+#tray {
+  background-color: @base;
+  padding: 0.5rem 1rem;
+  margin: 5px 0 5px 1rem;
+  border-radius: 999px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
 #clock.day {
   color: @green;
 }
