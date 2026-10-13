@@ -148,7 +148,8 @@
         "tooltip": false,
     },
     "custom/power": {
-        "on-click": "hyprctl dispatch exit",
+        // Same as SUPER+SHIFT+Q: stop audio first (WirePlumber crash on logout), then end the session via uwsm
+        "on-click": "systemctl --user stop wireplumber pipewire-pulse pipewire; uwsm stop",
         "format": "⏻",
         "tooltip": false,
     },

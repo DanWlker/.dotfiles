@@ -184,13 +184,25 @@ hl.config({
 		sensitivity = -0.5, -- -1.0 - 1.0, 0 means no modification.
 		accel_profile = "flat",
 
+		-- MacBook trackpad, set up to behave like macOS's defaults
 		touchpad = {
-			natural_scroll = false,
+			natural_scroll = true, -- content follows your fingers
+			scroll_factor = 0.1, -- scroll distance multiplier (default 1.0); lower = slower
+			clickfinger_behavior = true, -- 2-finger click = right click, 3-finger = middle (not by click position)
+			tap_to_click = false, -- macOS default: press to click
+			disable_while_typing = true, -- palm rejection
 		},
 
 		-- Change speed of keyboard repeat
 		repeat_delay = 350,
 	},
+})
+
+-- 3-finger horizontal swipe switches workspaces, like swiping between Spaces on macOS
+hl.gesture({
+	fingers = 3,
+	direction = "vertical",
+	action = "workspace",
 })
 
 -- MacBook trackpad: keep libinput's defaults instead of the mouse settings above
