@@ -13,7 +13,7 @@
 }
 
 #workspaces {
-  border-radius: 1rem;
+  border-radius: 999px;
   margin: 5px;
   background-color: @base;
 }
@@ -24,16 +24,19 @@
 
 #workspaces button {
   color: @subtext0;
-  border-radius: 1rem;
+  border-radius: 999px;
   padding: 0.4rem 0.3rem;
   border: 2px solid transparent;
+  transition: padding 150ms ease-in-out;
 }
 
 #workspaces button.active,
 #workspaces button.active:hover {
   background: @subtext0;
   color: @base;
-  border-radius: 1rem;
+  border-radius: 999px;
+  /* Longer pill for the current workspace */
+  padding: 0.4rem 1rem;
   border: 2px solid @subtext0;
   box-shadow: none;
   text-shadow: none;
@@ -60,7 +63,7 @@
 }
 
 #clock {
-  border-radius: 1rem;
+  border-radius: 999px;
   margin-left: 1rem;
 }
 
@@ -74,7 +77,7 @@
 
 #battery {
   color: @sky;
-  border-radius: 0px 1rem 1rem 0px;
+  border-radius: 0px 999px 999px 0px;
 }
 
 #battery.charging {
@@ -91,27 +94,27 @@
 
 #pulseaudio {
   color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
+  border-radius: 999px 0px 0px 999px;
   margin-left: 1rem;
 }
 
 #bluetooth {
-  border-radius: 1rem 0px 0px 1rem;
+  border-radius: 999px 0px 0px 999px;
   margin-left: 1rem;
 }
 
 #network {
-  border-radius: 0px 1rem 1rem 0px;
+  border-radius: 0px 999px 999px 0px;
 }
 
 #custom-lock {
   margin-left: 1rem;
-  border-radius: 1rem 0px 0px 1rem;
+  border-radius: 999px 0px 0px 999px;
   color: @lavender;
 }
 
 #custom-power {
   margin-right: 1rem;
-  border-radius: 0px 1rem 1rem 0px;
+  border-radius: 0px 999px 999px 0px;
   color: @red;
 }
