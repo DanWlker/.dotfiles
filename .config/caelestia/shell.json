@@ -50,6 +50,102 @@
             ]
         }
     },
+    "launcher": {
+        "actions": [
+            {
+                "command": [
+                    "autocomplete",
+                    "scheme"
+                ],
+                "description": "Change the current colour scheme",
+                "icon": "palette",
+                "name": "Scheme"
+            },
+            {
+                "command": [
+                    "autocomplete",
+                    "wallpaper"
+                ],
+                "description": "Change the current wallpaper",
+                "icon": "image",
+                "name": "Wallpaper"
+            },
+            {
+                "command": [
+                    "qs",
+                    "-c",
+                    "caelestia",
+                    "ipc",
+                    "call",
+                    "wallpaper",
+                    "random"
+                ],
+                "description": "Switch to a random wallpaper",
+                "icon": "casino",
+                "name": "Random"
+            },
+            {
+                "command": [
+                    "poweroff"
+                ],
+                "dangerous": true,
+                "description": "Shutdown the system",
+                "icon": "power_settings_new",
+                "name": "Shutdown"
+            },
+            {
+                "command": [
+                    "reboot"
+                ],
+                "dangerous": true,
+                "description": "Reboot the system",
+                "icon": "cached",
+                "name": "Reboot"
+            },
+            {
+                "command": [
+                    "logout"
+                ],
+                "dangerous": true,
+                "description": "Log out of the current session",
+                "icon": "exit_to_app",
+                "name": "Logout"
+            },
+            {
+                "command": [
+                    "loginctl",
+                    "lock-session"
+                ],
+                "description": "Lock the current session",
+                "icon": "lock",
+                "name": "Lock"
+            },
+            {
+                "command": [
+                    "sh",
+                    "-c",
+                    "loginctl lock-session && sleep 1 && hyprctl dispatch \"hl.dsp.dpms({ action = 'disable' })\""
+                ],
+                "description": "Lock and turn the screens off",
+                "icon": "bedtime",
+                "name": "Sleep"
+            },
+            {
+                "command": [
+                    "qs",
+                    "-c",
+                    "caelestia",
+                    "ipc",
+                    "call",
+                    "nexus",
+                    "open"
+                ],
+                "description": "Configure the shell",
+                "icon": "settings",
+                "name": "Settings"
+            }
+        ]
+    },
     "paths": {
         "wallpaperDir": "~/.config/hypr/wallpaper"
     },
@@ -57,5 +153,17 @@
         "clockFormat": "TwelveHour",
         "dataUnits": "Decimal",
         "weatherUnits": "Celsius"
+    },
+    "session": {
+        "commands": {
+            "hibernate": [
+                "sh",
+                "-c",
+                "loginctl lock-session && sleep 1 && hyprctl dispatch \"hl.dsp.dpms({ action = 'disable' })\""
+            ]
+        },
+        "icons": {
+            "hibernate": "bedtime"
+        }
     }
 }
