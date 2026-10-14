@@ -4,6 +4,9 @@
             "mono": {
                 "family": "Maple Mono NF"
             }
+        },
+        "transparency": {
+            "enabled": true
         }
     },
     "bar": {
@@ -57,7 +60,9 @@
                     "autocomplete",
                     "scheme"
                 ],
+                "dangerous": false,
                 "description": "Change the current colour scheme",
+                "enabled": true,
                 "icon": "palette",
                 "name": "Scheme"
             },
@@ -66,7 +71,9 @@
                     "autocomplete",
                     "wallpaper"
                 ],
+                "dangerous": false,
                 "description": "Change the current wallpaper",
+                "enabled": true,
                 "icon": "image",
                 "name": "Wallpaper"
             },
@@ -80,7 +87,9 @@
                     "wallpaper",
                     "random"
                 ],
+                "dangerous": false,
                 "description": "Switch to a random wallpaper",
+                "enabled": true,
                 "icon": "casino",
                 "name": "Random"
             },
@@ -90,6 +99,7 @@
                 ],
                 "dangerous": true,
                 "description": "Shutdown the system",
+                "enabled": true,
                 "icon": "power_settings_new",
                 "name": "Shutdown"
             },
@@ -99,6 +109,7 @@
                 ],
                 "dangerous": true,
                 "description": "Reboot the system",
+                "enabled": true,
                 "icon": "cached",
                 "name": "Reboot"
             },
@@ -108,6 +119,7 @@
                 ],
                 "dangerous": true,
                 "description": "Log out of the current session",
+                "enabled": true,
                 "icon": "exit_to_app",
                 "name": "Logout"
             },
@@ -116,7 +128,9 @@
                     "loginctl",
                     "lock-session"
                 ],
+                "dangerous": false,
                 "description": "Lock the current session",
+                "enabled": true,
                 "icon": "lock",
                 "name": "Lock"
             },
@@ -126,7 +140,9 @@
                     "-c",
                     "loginctl lock-session && sleep 1 && hyprctl dispatch \"hl.dsp.dpms({ action = 'disable' })\""
                 ],
+                "dangerous": false,
                 "description": "Lock and turn the screens off",
+                "enabled": true,
                 "icon": "bedtime",
                 "name": "Sleep"
             },
@@ -140,7 +156,9 @@
                     "nexus",
                     "open"
                 ],
+                "dangerous": false,
                 "description": "Configure the shell",
+                "enabled": true,
                 "icon": "settings",
                 "name": "Settings"
             }
