@@ -163,9 +163,6 @@
         ],
         "showOnHover": true
     },
-    "paths": {
-        "wallpaperDir": "~/.config/hypr/wallpaper"
-    },
     "services": {
         "clockFormat": "TwelveHour",
         "dataUnits": "Decimal",
