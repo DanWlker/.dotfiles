@@ -51,8 +51,6 @@
         }
     },
     "paths": {
-        "mediaGif": "",
-        "sessionGif": "",
         "wallpaperDir": "~/.config/hypr/wallpaper"
     },
     "services": {
