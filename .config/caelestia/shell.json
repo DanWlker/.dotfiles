@@ -54,6 +54,7 @@
         }
     },
     "launcher": {
+        "actionPrefix": ":",
         "actions": [
             {
                 "command": [
@@ -162,7 +163,8 @@
                 "icon": "settings",
                 "name": "Settings"
             }
-        ]
+        ],
+        "showOnHover": true
     },
     "paths": {
         "wallpaperDir": "~/.config/hypr/wallpaper"
