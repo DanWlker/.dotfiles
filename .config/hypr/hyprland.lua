@@ -49,8 +49,8 @@ end)
 
 hl.config({
 	general = {
-		gaps_in = 5,
-		gaps_out = { top = 10, left = 10, right = 10, bottom = 10 },
+		gaps_in = 6,
+		gaps_out = 12,
 
 		border_size = 3,
 
@@ -64,15 +64,17 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 12,
+		rounding = 8,
 		rounding_power = 4,
 
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 0.9,
 		inactive_opacity = 0.9,
+		fullscreen_opacity = 0.9,
 
 		shadow = {
 			color = mocha.mantle,
+			range = 8,
 		},
 
 		blur = {
