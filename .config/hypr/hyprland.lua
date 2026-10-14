@@ -22,10 +22,9 @@ hl.on("hyprland.start", function()
 	-- Hand the session env to ksecretd so the PAM-unlocked wallet registers on D-Bus.
 	-- Its XDG autostart entry has X-systemd-skip=true (Plasma runs it itself), so uwsm skips it.
 	hl.exec_cmd("/usr/libexec/pam_kwallet_init")
-	-- Polkit agent; started here rather than enabled so it doesn't clash with Plasma's agent
-	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
 	-- Caelestia shell (fork in ~/.config/quickshell/caelestia): bar, launcher, notifications, OSD, lock,
-	-- idle, wallpaper and session menu.
+	-- idle, wallpaper, session menu and the polkit agent (the password prompt for admin actions; it replaced
+	-- hyprpolkitagent, and only one agent can register per session).
 	-- Needs QML_IMPORT_PATH and CAELESTIA_LIB_DIR from ~/.config/uwsm/env.
 	hl.exec_cmd("uwsm-app -s b -- qs -c caelestia -n -d")
 	-- GTK apps (e.g. file dialogs) draw their own cursor from this GNOME setting, not from

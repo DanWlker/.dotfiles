@@ -10,10 +10,10 @@ sudo dnf copr enable -y imput/helium
 PACKAGES=(
 	# Compositor + session
 	hyprland uwsm xdg-desktop-portal-hyprland qt5-qtwayland qt6-qtwayland
-	# Hypr ecosystem: polkit prompt, dialogs, Qt6 theming
-	# (bar, launcher, notifications, OSD, lock, idle and wallpaper come from the Caelestia shell:
-	# install-caelestia-fedora-kde-plasma.sh)
-	hyprpolkitagent hyprland-guiutils hyprqt6engine
+	# Hypr ecosystem: dialogs, Qt6 theming
+	# (bar, launcher, notifications, OSD, lock, idle, wallpaper and the polkit prompt come from the Caelestia
+	# shell: install-caelestia-fedora-kde-plasma.sh)
+	hyprland-guiutils hyprqt6engine
 	# Apps used by keybinds
 	kitty helium-bin
 	# Media keys (wpctl comes from wireplumber)
