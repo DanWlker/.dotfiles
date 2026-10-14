@@ -4,9 +4,6 @@
             "mono": {
                 "family": "Maple Mono NF"
             }
-        },
-        "transparency": {
-            "enabled": true
         }
     },
     "bar": {
