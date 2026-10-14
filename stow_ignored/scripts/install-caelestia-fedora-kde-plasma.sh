@@ -16,6 +16,8 @@ PACKAGES=(
 	lm_sensors-devel
 	# Runtime (quickshell from the COPR; Fedora's own is too old)
 	quickshell qt6-qtimageformats ddcutil brightnessctl NetworkManager lm_sensors libxml2
+	# Power profiles for the battery pop-out (Fedora's power-profiles-daemon replacement, same D-Bus API)
+	tuned-ppd
 	# Screenshot editor and screen recorder (wf-recorder instead of gpu-screen-recorder on Asahi);
 	# wl-clipboard copies screenshots, slurp picks recording regions (also pulled in by the portal)
 	swappy wf-recorder wl-clipboard slurp
@@ -60,5 +62,5 @@ cd "$HOME/.dotfiles" && stow .
 
 # Manual steps not covered here:
 # - Log out and back in so uwsm loads the new env; hyprland.lua starts the shell (qs -c caelestia)
-# - Not installed on purpose: power-profiles-daemon, fish, libqalculate, aubio, libcava, pipewire-devel
+# - Not installed on purpose: fish, libqalculate, aubio, libcava, pipewire-devel
 #   (the fork removed the code that needed them)
