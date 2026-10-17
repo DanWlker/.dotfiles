@@ -159,8 +159,13 @@ if [[ -d "$HOME/.local/share/pnpm" ]]; then
 fi
 
 # lazygit
-if command -v lazygit >/dev/null 2>&1; then
-	alias l="lazygit"
+# if command -v lazygit >/dev/null 2>&1; then
+# 	alias l="lazygit"
+# fi
+
+# spoon (git)
+if command -v spoon >/dev/null 2>&1; then
+	alias s="spoon"
 fi
 
 # kubectl
