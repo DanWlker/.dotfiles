@@ -60,6 +60,7 @@ hl.config({
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
 		resize_on_border = true,
+		layout = "master",
 	},
 
 	decoration = {
@@ -138,7 +139,11 @@ hl.config({
 	},
 
 	master = {
-		new_status = "master",
+		new_on_active = "after",
+	},
+
+	scrolling = {
+		column_width = 0.5,
 	},
 
 	misc = {
@@ -277,6 +282,8 @@ hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "d" }))
 -- Resize window using mainMod + ALT + arrows
 hl.bind(mainMod .. " + ALT + left", hl.dsp.window.resize({ x = -20, y = 0, relative = true }))
 hl.bind(mainMod .. " + ALT + right", hl.dsp.window.resize({ x = 20, y = 0, relative = true }))
+-- hl.bind(mainMod .. " + ALT + left", hl.dsp.layout("colresize -conf"))
+-- hl.bind(mainMod .. " + ALT + right", hl.dsp.layout("colresize +conf"))
 hl.bind(mainMod .. " + ALT + up", hl.dsp.window.resize({ x = 0, y = -20, relative = true }))
 hl.bind(mainMod .. " + ALT + down", hl.dsp.window.resize({ x = 0, y = 20, relative = true }))
 
