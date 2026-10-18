@@ -254,7 +254,7 @@ hl.bind(
 )
 -- Caelestia's region picker on a frozen screen, copied to the clipboard
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"))
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
+-- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- not applicable to master slave
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.focus({ workspace = "e-1" }))
 
@@ -272,6 +272,9 @@ hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "l" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "r" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "d" }))
+hl.bind(mainMod .. " + M", hl.dsp.layout("addmaster"))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.layout("removemaster"))
+hl.bind(mainMod .. " + S", hl.dsp.layout("swapwithmaster"))
 
 -- Move window using mainMod + SHIFT + arrows
 hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ direction = "l" }))
@@ -282,8 +285,8 @@ hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "d" }))
 -- Resize window using mainMod + ALT + arrows
 hl.bind(mainMod .. " + ALT + left", hl.dsp.window.resize({ x = -20, y = 0, relative = true }))
 hl.bind(mainMod .. " + ALT + right", hl.dsp.window.resize({ x = 20, y = 0, relative = true }))
--- hl.bind(mainMod .. " + ALT + left", hl.dsp.layout("colresize -conf"))
--- hl.bind(mainMod .. " + ALT + right", hl.dsp.layout("colresize +conf"))
+-- hl.bind(mainMod .. " + ALT + left", hl.dsp.layout("colresize -conf")) -- only works with scroll
+-- hl.bind(mainMod .. " + ALT + right", hl.dsp.layout("colresize +conf")) -- only works with scroll
 hl.bind(mainMod .. " + ALT + up", hl.dsp.window.resize({ x = 0, y = -20, relative = true }))
 hl.bind(mainMod .. " + ALT + down", hl.dsp.window.resize({ x = 0, y = 20, relative = true }))
 
