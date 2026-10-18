@@ -8,6 +8,11 @@
 - When a simplification would sacrifice behaviour, list it with exactly what is lost and let me choose. Do not decide alone.
 - Verify claims by running them, not by reasoning from the code. Say plainly what was not checked.
 - Throwaway repos and scripts go in the scratchpad, never in the project.
+- Stay in scope: don't change code outside what the task covers. If the scope isn't clear, stop and ask before touching anything. Put what you find out of scope in a separate section; don't silently drop it.
+- Check README/docs before flagging a behaviour: if it's documented, it's intentional; if the docs and the code disagree, say so. If it's unclear which docs apply or whether they're current, ask me. With no docs covering it, say it in an inline comment.
+- If investigation shows an earlier finding was wrong, say so and restate it accurately in a corrections section at the end; never quietly drop it.
+- When I say an explanation isn't landing, build a self-contained HTML file (inline CSS/SVG, no external deps) outside the project (e.g. `/tmp`) and give its path plus a short text version.
+- Reviews: start with design and duplication hotspots; go line by line only where risk is real. Risk, at least: correctness, data loss, security, concurrency, panics, environment/portability, resource leaks, compatibility (CLI flags, config, saved formats), performance, and failure paths.
 
 # How to refactor and simplify
 
@@ -19,6 +24,9 @@
 6. **No redundant guards.** Skip a pre-check when the operation itself fails with a clear error anyway; show the tool's own error.
 7. **Crates and libraries: use one when it is clearly better** than our code, but don't add one to replace ~25 lines that already cover our cases. Use what is already a dependency before writing it again. Explain the trade-off either way.
 8. **Prefer the simpler model.** If a feature needs subtle rules, show the scenarios and lean towards the simpler rule or a warning.
+9. **A dedup is a behaviour claim, not a shape.** Before proposing one, confirm from the code that they do the same thing and that unifying keeps behaviour (say plainly when it's reasoned, not verified). Near-copies often differ in a condition that matters, or carry state one side doesn't use; when they do, list exactly what changes and let me choose. If it's unclear whether they're the same, or whether to extract part or all, ask me.
+10. **Refactor the production code without shaping it around the tests.** Change the tests to match, and still run them. Tests aren't the source of intended behaviour: I decide when one is wrong, so ask me rather than guessing. Don't extract shared test helpers or dedupe test code.
+11. **A shared type owns only what is truly identical.** Keep state the callers must differ on (cursor, selection, focus) with the callers — if two callers would set a field differently, it stays out; one source of truth.
 
 # UI
 
