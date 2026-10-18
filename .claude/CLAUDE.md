@@ -30,7 +30,6 @@
 
 # UI
 
-- One key per action; a key does nothing, and is not shown, where it does not apply.
 - Disable actions that are invalid in the current state. When fixing one such case, look for the others.
 - The same element looks the same everywhere. Inconsistent UI is a bug; add a test that would catch it.
 
