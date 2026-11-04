@@ -146,6 +146,12 @@ hl.config({
 		column_width = 0.5,
 	},
 
+	-- Don't auto-switch to HDR for fullscreen apps: the Dell is 8-bit over HDMI and Asahi can't send
+	-- HDR metadata, so the switch only shows "wide color gamut ... not in 10-bit mode" and washes colours grey
+	render = {
+		cm_auto_hdr = 0,
+	},
+
 	misc = {
 		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
