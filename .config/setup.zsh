@@ -237,8 +237,8 @@ fi
 
 # zsh-auto-suggestions
 if [[ -r ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-	unset ZSH_AUTOSUGGEST_USE_ASYNC # To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
 	source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	unset ZSH_AUTOSUGGEST_USE_ASYNC # after source: the plugin sets it on load. To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
 fi
 
 # zsh-history-substring-search
