@@ -25,8 +25,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [[ -r $(brew --prefix 2>/dev/null)/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-	source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+if [[ -r $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+	source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
 	[[ -r ~/.config/.p10k.zsh ]] && source ~/.config/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 fi
 
@@ -66,14 +66,14 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # aliases
-alias whoami="whoami && curl ident.me"
+alias whoami="whoami && command curl ident.me" # command: skip the verbose curl alias below
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -Iv"
 alias ln='ln -iv'
 alias mkdir="mkdir -pv"
 # courtesy of: https://www.hypertesto.me/en/blog/2026/08/curlese-five-years-later/
-alias curlopsy="curl -o /dev/null -s -w 'dns:%{time_namelookup} connect:%{time_connect} tls:%{time_appconnect} total:%{time_total} http:%{http_code}\n'"
+alias curlopsy="command curl -o /dev/null -s -w 'dns:%{time_namelookup} connect:%{time_connect} tls:%{time_appconnect} total:%{time_total} http:%{http_code}\n'"
 alias curl='curl -v --trace-time -w "\n======\nTotal Took: %{time_total} | TCP connection took: %{time_connect} | TLS/SSL connection took: %{time_appconnect}\n=====\n"'
 mkcd() {
 	[[ $# -ne 1 ]] && return 1

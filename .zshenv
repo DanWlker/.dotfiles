@@ -1,4 +1,4 @@
-export EDITOR="$(which nvim)"
+export EDITOR=nvim # not $(which nvim): PATH has no brew yet when .zshenv runs
 export VISUAL="$EDITOR"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"

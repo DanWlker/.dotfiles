@@ -1,4 +1,4 @@
-HOMEBREW_PREFIX=$(brew --prefix)
+typeset -U fpath # unique entries: .zprofile's brew shellenv re-adds site-functions to an inherited FPATH, which would change compinit's file count and force a cache rebuild
 
 # https://stackoverflow.com/a/677212
 if command -v vivid >/dev/null 2>&1; then
@@ -23,7 +23,7 @@ if command -v fzf >/dev/null 2>&1; then
 	fi
 	if command -v rg >/dev/null 2>&1; then
 		sgrep() {
-			if [ ! "$" -gt 0 ]; then
+			if [ ! "$#" -gt 0 ]; then
 				echo "Need a string to search for!"
 				return 1
 			fi
@@ -31,7 +31,7 @@ if command -v fzf >/dev/null 2>&1; then
 		}
 	else
 		sgrep() {
-			if [ ! "$" -gt 0 ]; then
+			if [ ! "$#" -gt 0 ]; then
 				echo "Need a string to search for!"
 				return 1
 			fi
