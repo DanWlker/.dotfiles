@@ -7,3 +7,7 @@
 [submodule ".config/quickshell/caelestia"]
 	path = .config/quickshell/caelestia
 	url = https://github.com/DanWlker/caelestia-shell.git
+[submodule ".zsh/plugins/powerlevel10k"]
+	path = .zsh/plugins/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+	shallow = true

@@ -4,3 +4,5 @@
 .config/fcitx5/conf/cached_layouts
 # fcitx5 Pinyin: typing history and learned words (private, machine-local)
 .local/share/fcitx5/pinyin/
+# carapace zsh bridge: generated ZDOTDIR and completion cache
+.config/carapace/bridge/

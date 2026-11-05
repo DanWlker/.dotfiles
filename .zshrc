@@ -25,8 +25,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [[ -r $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-	source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
+if [[ -r ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+	source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 	[[ -r ~/.config/.p10k.zsh ]] && source ~/.config/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 fi
 
