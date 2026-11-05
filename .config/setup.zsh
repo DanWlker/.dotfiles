@@ -175,13 +175,7 @@ fi
 
 # asdf
 if command -v asdf >/dev/null 2>&1; then
-	if [[ ! -d "${ASDF_DATA_DIR:-$HOME/.asdf}/completions" ]]; then
-		echo "Creating completions for asdf"
-		mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
-		asdf completion zsh >"${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
-	fi
 	export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-	fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 	if asdf where flutter >/dev/null 2>&1; then
 		export FLUTTER_ROOT="$(asdf where flutter)"
 	fi
@@ -192,21 +186,14 @@ if command -v jaq >/dev/null 2>&1; then
 	alias jq="jaq"
 fi
 
-# mani
-if command -v mani >/dev/null 2>&1; then
-	# Define where to store mani completions
-	MANI_COMPLETIONS_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/mani/completions"
-
-	# Create and generate completion if missing
-	if [[ ! -d "$MANI_COMPLETIONS_DIR" ]]; then
-		echo "Creating completions for mani"
-		mkdir -p "$MANI_COMPLETIONS_DIR"
-		mani completion zsh >"$MANI_COMPLETIONS_DIR/_mani"
-	fi
-
-	# Add to fpath for autoloading
-	fpath=($MANI_COMPLETIONS_DIR $fpath)
+# zsh-completions
+if [[ -d $HOMEBREW_PREFIX/share/zsh-completions ]]; then
+	fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
 fi
+
+# Completion init. Exactly once: after every fpath change, before any compdef/complete/fzf-tab.
+# Prefer carapace: only add a completion to fpath when `carapace --list` shows the tool as "bridge" only.
+autoload -Uz compinit && compinit
 
 # carapace
 if command -v carapace >/dev/null 2>&1; then
@@ -219,12 +206,6 @@ fi
 # go
 if command -v go >/dev/null 2>&1; then
 	export PATH=$(go env GOPATH)/bin:$PATH
-fi
-
-# terraform
-if command -v terraform >/dev/null 2>&1; then
-	autoload -U +X bashcompinit && bashcompinit
-	complete -o nospace -C /Users/zixi.hee/homebrew/bin/terraform terraform
 fi
 
 # fzf-tab
@@ -247,11 +228,6 @@ if [[ -r "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
 	# use tmux popups
 	# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 	source "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
-fi
-
-# zsh-completions
-if [[ -d $HOMEBREW_PREFIX/share/zsh-completions ]]; then
-	FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
 fi
 
 # zsh-system-clipboard

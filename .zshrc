@@ -1,6 +1,6 @@
 if [ -d "/opt/homebrew" ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [ -d "~/.linuxbrew" ]; then
+elif [ -d "$HOME/.linuxbrew" ]; then
 	eval "$(~/.linuxbrew/bin/brew shellenv)"
 elif [ -d "/home/linuxbrew" ]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -83,14 +83,9 @@ mkcd() {
 # Local dependencies
 export PATH="$HOME/.local/bin:$PATH"
 
-autoload -Uz compinit
-compinit
-
-# Setup commands
+# Setup commands (runs compinit)
 source ~/.config/setup.zsh
 if [[ -r ~/.local/setup.zsh ]]; then
 	source ~/.local/setup.zsh
 fi
 
-# idk if this is needed but whatever
-compinit
