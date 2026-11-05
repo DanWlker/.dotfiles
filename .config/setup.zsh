@@ -187,8 +187,8 @@ if command -v jaq >/dev/null 2>&1; then
 fi
 
 # zsh-completions
-if [[ -d $HOMEBREW_PREFIX/share/zsh-completions ]]; then
-	fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
+if [[ -d ~/.zsh/plugins/zsh-completions/src ]]; then
+	fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 fi
 
 # Completion init. Exactly once: after every fpath change, before any compdef/complete/fzf-tab.
@@ -209,7 +209,7 @@ if command -v go >/dev/null 2>&1; then
 fi
 
 # fzf-tab
-if [[ -r "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
+if [[ -r ~/.zsh/plugins/fzf-tab/fzf-tab.zsh ]]; then
 	# set descriptions format to enable group support
 	# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
 	zstyle ':completion:*:descriptions' format '[%d]'
@@ -227,25 +227,25 @@ if [[ -r "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh" ]]; then
 	zstyle ':fzf-tab:*' fzf-flags --height=60%
 	# use tmux popups
 	# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-	source "$HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
+	source ~/.zsh/plugins/fzf-tab/fzf-tab.zsh
 fi
 
 # zsh-system-clipboard
-if [[ -r $HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
-	source "$HOMEBREW_PREFIX/share/zsh-system-clipboard/zsh-system-clipboard.zsh"
+if [[ -r ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
+	source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 fi
 
 # zsh-auto-suggestions
-if [[ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+if [[ -r ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
 	unset ZSH_AUTOSUGGEST_USE_ASYNC # To fix incompatibility issue: https://github.com/romkatv/powerlevel10k/issues/1554#issuecomment-1701598955
-	source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # zsh-history-substring-search
-if [[ -r "$HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]]; then
+if [[ -r ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ]]; then
 	export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='none'
 	export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='none'
-	source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+	source ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 	bindkey '^[[A' history-substring-search-up
 	bindkey '^[[B' history-substring-search-down
 fi

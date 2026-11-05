@@ -11,3 +11,23 @@
 	path = .zsh/plugins/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule ".zsh/plugins/zsh-completions"]
+	path = .zsh/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+	shallow = true
+[submodule ".zsh/plugins/fzf-tab"]
+	path = .zsh/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab.git
+	shallow = true
+[submodule ".zsh/plugins/zsh-system-clipboard"]
+	path = .zsh/plugins/zsh-system-clipboard
+	url = https://github.com/kutsan/zsh-system-clipboard.git
+	shallow = true
+[submodule ".zsh/plugins/zsh-autosuggestions"]
+	path = .zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+	shallow = true
+[submodule ".zsh/plugins/zsh-history-substring-search"]
+	path = .zsh/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+	shallow = true
