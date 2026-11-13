@@ -36,7 +36,7 @@
                     "inhibitWhenAudio": false,
                     "inhibitWhenCharging": false,
                     "respectInhibitors": true,
-                    "timeout": 180
+                    "timeout": 40
                 },
                 {
                     "enabled": true,
@@ -45,7 +45,7 @@
                     "inhibitWhenCharging": false,
                     "respectInhibitors": true,
                     "returnAction": "dpms on",
-                    "timeout": 20
+                    "timeout": 60
                 }
             ]
         }
