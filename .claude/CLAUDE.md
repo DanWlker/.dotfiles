@@ -16,9 +16,13 @@
 
 # How to refactor and simplify
 
-1. **Make invalid states impossible.** Use an enum instead of several bools, a non-optional value instead of a later `None` check, and data held by the variant it belongs to. Bool parameters (`set_x(true)`) and enum variants carrying bool fields are suspects too.
+1. **Make invalid states impossible: store each independent fact once, in its own place.**
+    - **One value, one question.** Use an enum instead of several bools, and a non-optional value instead of a later `None` check. When a single value answers two independent questions, it only covers the combinations someone listed, so a valid one can be missing, and every reader has to take it apart; give each question its own value. Signs: names that combine words into a grid (`picked_bright`, `closed_rooted`), the same name with a suffix (`text`, `text_focused`), code that always checks a pair of cases together, or callers that build the value from two others. Missing combinations are fine only when they mean nothing in the domain; say so in a comment.
+    - **Don't store what can be asked.** If the receiver can find a fact itself, don't have each caller work it out and pass it in: the copies can disagree, and a new caller can get it wrong.
+    - **Keep a fact with what it describes.** A detail that only applies in one case belongs to that case (data held by the variant it belongs to), not beside it where it must be ignored the rest of the time.
+    - **Name choices, don't flag them.** A bare `true`/`false` says nothing at the call site; a named choice does. Bool parameters (`set_x(true)`) and enum variants carrying bool fields are suspects.
 2. **Fix the root cause in the shared mechanism.** A special case layered on top is a sign the fix is too shallow. Change the underlying code so the case is no longer special.
-3. **One implementation for one concept.** Look for near-copies (popups, search, trees, panels) and merge them. Shared concepts behave identically everywhere.
+3. **One implementation for one concept.** Look for near-copies (popups, search, trees, panels) and merge them. Shared concepts behave identically everywhere. The same goes for definitions: two types, settings or names that map one-to-one are one concept; keep one and adapt at the edge (like the names the config or command line uses).
 4. **Delete before adding.** Remove unused features, dead options, thin wrappers and the extras they leave behind.
 5. **Avoid too many tiny functions.** A small function used once is usually clearer inlined; jumping between helpers costs human context. Extract only for real reuse or a separately testable job.
 6. **No redundant guards.** Skip a pre-check when the operation itself fails with a clear error anyway; show the tool's own error.
