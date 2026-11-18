@@ -320,8 +320,8 @@ local mediaKeys = {
 	{ "XF86AudioMicMute", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", false },
 	-- Brightness through the shell, which only tracks changes it makes itself. Always the laptop panel:
 	-- Asahi has no DDC for the Dell, so the shell's own "brightnessUp" (focused monitor) would do nothing there.
-	{ "XF86MonBrightnessUp", "qs -c caelestia ipc call brightness setFor eDP-1 +10%", true },
-	{ "XF86MonBrightnessDown", "qs -c caelestia ipc call brightness setFor eDP-1 10%-", true },
+	{ "XF86MonBrightnessUp", "qs -c caelestia ipc call brightness setFor " .. laptopMonitor .. " +10%", true },
+	{ "XF86MonBrightnessDown", "qs -c caelestia ipc call brightness setFor " .. laptopMonitor .. " 10%-", true },
 }
 for _, k in ipairs(mediaKeys) do
 	hl.bind(k[1], hl.dsp.exec_cmd(k[2]), { locked = true, repeating = k[3] })

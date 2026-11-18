@@ -22,20 +22,31 @@ if command -v fzf >/dev/null 2>&1; then
 		}
 	fi
 	if command -v rg >/dev/null 2>&1; then
+		# Live grep. Query "foo -- -g *.lua" passes everything after " -- " to rg as flags.
+		# ctrl-g switches between rg mode and fuzzy-filtering the results; ctrl-f (fzf mode) cycles matching on all/path/text, shown in the prompt.
+		# enter opens the current or tab-selected matches in nvim's quickfix list.
 		sgrep() {
-			if [ ! "$#" -gt 0 ]; then
-				echo "Need a string to search for!"
-				return 1
-			fi
-			rg --smart-case --hidden --files-with-matches --no-messages -g "!node_modules" -g "!.git" "$1" | fzf --multi $FZF_PREVIEW_WINDOW --preview "rg --smart-case --pretty --context 10 '$1' {}"
-		}
-	else
-		sgrep() {
-			if [ ! "$#" -gt 0 ]; then
-				echo "Need a string to search for!"
-				return 1
-			fi
-			grep -rIl --exclude-dir=node_modules --exclude-dir=.git -- "$1" . | fzf --multi $FZF_PREVIEW_WINDOW --preview "grep -n --color=always -C 10 -- '$1' {}"
+			local state
+			state=$(mktemp -d) || return
+			# bash, not zsh: the reload relies on bash word splitting of $flags.
+			local reload='q={q}; q=${q% --}; pat=${q%% -- *}; flags=; [[ $q == *" -- "* ]] && flags=${q#* -- }
+				set -f; rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!.git" -g "!node_modules" $flags -- "$pat" || true'
+			fzf --with-shell 'bash -c' --ansi --disabled --query "$*" \
+				--delimiter : --prompt 'rg> ' \
+				--bind "start:reload:$reload" \
+				--bind "change:reload:sleep 0.1; $reload" \
+				--bind "ctrl-g:transform:[[ \$FZF_PROMPT == 'rg> ' ]] &&
+					echo \"unbind(change)+change-prompt(fzf> )+enable-search+transform-query:echo \{q} > $state/rg; cat $state/fzf 2>/dev/null\" ||
+					echo \"rebind(change)+change-prompt(rg> )+disable-search+change-nth()+transform-query:echo \{q} > $state/fzf; cat $state/rg\"" \
+				--bind 'ctrl-f:transform:[[ $FZF_PROMPT == "rg> " ]] || case $FZF_NTH in
+					"") echo "change-nth(1)+change-prompt(fzf[path]> )" ;;
+					1) echo "change-nth(4..)+change-prompt(fzf[text]> )" ;;
+					*) echo "change-nth()+change-prompt(fzf> )" ;;
+				esac' \
+				--preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+				--preview-window 'up,60%,border-bottom,+{2}+3/3' \
+				--bind 'enter:become(nvim -q {+f})'
+			command rm -rf "$state"
 		}
 	fi
 	# remove bg in colors

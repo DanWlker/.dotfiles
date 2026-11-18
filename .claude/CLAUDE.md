@@ -36,5 +36,6 @@
 # Tests and checks
 
 - Risky logic and failure paths get a test. Tests must not depend on the user's environment (git config, home directory).
-- Before reporting done, run the project's CI checks (format, lint, tests).
+- A test for a bug must fail without the fix: check that once, by reverting the fix or with a probe.
+- Before reporting done, run the project's CI checks (format, lint, tests), with the whole test suite rather than a filtered run.
 - Rust: code reviews also apply `~/.claude/microsoft-rust-guidelines.txt`.
