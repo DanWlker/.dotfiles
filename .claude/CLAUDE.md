@@ -8,6 +8,7 @@
 - When a simplification would sacrifice behaviour, list it with exactly what is lost and let me choose. Do not decide alone.
 - Verify claims by running them, not by reasoning from the code. Say plainly what was not checked.
 - Throwaway repos and scripts go in the scratchpad, never in the project.
+- Before answering anything from git state (tags, branches, what's released or deployed), run `git fetch` first and check its output and exit code; a failed or partial fetch means the answer is unverified. Read from the remote (`origin/<branch>`, `git ls-remote`), not the local checkout, which may be on a feature branch or hold stale tags. Never force-overwrite local tags or branches to sync; say they're stale and let me decide.
 - Stay in scope: don't change code outside what the task covers. If the scope isn't clear, stop and ask before touching anything. Put what you find out of scope in a separate section; don't silently drop it.
 - Check README/docs before flagging a behaviour: if it's documented, it's intentional; if the docs and the code disagree, say so. If it's unclear which docs apply or whether they're current, ask me. With no docs covering it, say it in an inline comment.
 - If investigation shows an earlier finding was wrong, say so and restate it accurately in a corrections section at the end; never quietly drop it.
